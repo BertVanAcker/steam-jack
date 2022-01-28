@@ -1,11 +1,11 @@
 import socket
 
-UDP_IP = socket.gethostname()        #for testing purpose
-#UDP_IP = "192.168.0.110"        #NAVIO
+#UDP_IP = socket.gethostname()        #for testing purpose
+UDP_IP = "192.168.0.110"        #NAVIO
 UDP_PORT = 6789  #9090
 
 id=1
-cmd = "L"
+cmd = "LED"
 color = 1
 MESSAGE = ("#" + str(id) + cmd +str(color)+ "\r").encode('utf-8')
 print(MESSAGE)

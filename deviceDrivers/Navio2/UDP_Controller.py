@@ -39,7 +39,7 @@ def genericRead(data):
         return matches[0][0],matches[0][1],matches[0][2]
 
 def executeCommand(cmd,parameter):
-
+    print(cmd+str(parameter))
     if cmd == NAVIO_ActionLED:
         if parameter == NAVIO_LED_Red:
             led.setColor('Red')
