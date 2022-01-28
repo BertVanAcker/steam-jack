@@ -64,6 +64,7 @@ while(True):
     x=1
     try:
         data, addr = sock.recvfrom(1024)
+        print(data)
         # Parse packet
         id,cmd,value = genericRead(data)
 
