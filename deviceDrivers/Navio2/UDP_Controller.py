@@ -39,10 +39,14 @@ def genericRead(data):
         return matches[0][0],matches[0][1],matches[0][2]
 
 def executeCommand(cmd,parameter):
-    print(cmd+str(parameter))
+    
     if cmd == NAVIO_ActionLED:
         if parameter == NAVIO_LED_Red:
             led.setColor('Red')
+        if parameter == NAVIO_LED_Yellow:
+            led.setColor('Yellow')
+        if parameter == NAVIO_LED_Green:
+            led.setColor('Green')
 
 
 
@@ -64,7 +68,6 @@ while(True):
     x=1
     try:
         data, addr = sock.recvfrom(1024)
-        print(data)
         # Parse packet
         id,cmd,value = genericRead(data)
 
