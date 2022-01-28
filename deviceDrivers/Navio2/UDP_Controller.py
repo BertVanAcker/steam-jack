@@ -31,7 +31,7 @@ led = navio.leds.Led()
 
 #function library
 def genericRead(data):
-
+    print(data)
     matches = re.findall("(\d{1,3})([A-Z]{1,4})(-?\d{1,18})", data.decode('utf-8'), re.I)
     if matches is None:
         return -1
