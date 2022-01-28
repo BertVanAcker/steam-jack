@@ -50,7 +50,7 @@ def executeCommand(cmd,parameter):
 
 
 #-------------------UDP initialization--------------------------------
-UDP_IP = socket.gethostname()
+UDP_IP = '' #socket.gethostname()
 UDP_PORT = 6789
 #----------------setting up connection and both ports----------------
 sock = socket.socket(socket.AF_INET,socket.SOCK_DGRAM) # UDP
