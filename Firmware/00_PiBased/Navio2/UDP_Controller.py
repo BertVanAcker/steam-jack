@@ -1,3 +1,6 @@
+
+
+
 #generic imports
 import socket
 import struct
@@ -115,7 +118,7 @@ def executeCommand(cmd,parameter):
         BLINK_THREAD.start()
 
     if cmd == SJ_BlinkLEDSTOP:
-        BLINK_THREAD.join()
+        BLINK_THREAD.cancel()
 
 
 
