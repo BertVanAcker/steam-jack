@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="17dbf23a-a872-4962-90f7-2944e55d987e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Firmware/00_PiBased/Navio2/UDP_Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Firmware/00_PiBased/Navio2/UDP_Controller.py" afterDir="false" />
-    </list>
+    <list default="true" id="17dbf23a-a872-4962-90f7-2944e55d987e" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +27,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Firmware/00_PiBased/Navio2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Firmware/00_PiBased/Navio2/SJ_helpers" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -39,11 +36,11 @@
       <recent name="C:\Users\B.MKR\Documents\03_Repositories\steam-jack\dist_previous" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\B.MKR\Documents\03_Repositories\steam-jack\Firmware\00_PiBased\Navio2\SJ_helpers" />
       <recent name="C:\Users\B.MKR\Documents\03_Repositories\steam-jack\Firmware\00_PiBased\Navio2" />
       <recent name="C:\Users\B.MKR\Documents\03_Repositories\steam-jack\examples\Development_boards\Emlid_Navio" />
       <recent name="C:\Users\B.MKR\Documents\03_Repositories\steam-jack\steam_jack\DeviceLibrary" />
       <recent name="C:\Users\B.MKR\Documents\03_Repositories\steam-jack\examples\Emlid_Navio" />
-      <recent name="C:\Users\B.MKR\Documents\03_Repositories\steam-jack\tests" />
     </key>
   </component>
   <component name="RunDashboard">
