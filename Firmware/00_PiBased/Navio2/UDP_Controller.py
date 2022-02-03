@@ -1,6 +1,4 @@
 
-
-
 #generic imports
 import socket
 import struct

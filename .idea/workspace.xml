@@ -30,7 +30,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/examples/Development_boards/Emlid_Navio" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Firmware/00_PiBased/Navio2" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -39,11 +39,11 @@
       <recent name="C:\Users\B.MKR\Documents\03_Repositories\steam-jack\dist_previous" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\B.MKR\Documents\03_Repositories\steam-jack\Firmware\00_PiBased\Navio2" />
       <recent name="C:\Users\B.MKR\Documents\03_Repositories\steam-jack\examples\Development_boards\Emlid_Navio" />
       <recent name="C:\Users\B.MKR\Documents\03_Repositories\steam-jack\steam_jack\DeviceLibrary" />
       <recent name="C:\Users\B.MKR\Documents\03_Repositories\steam-jack\examples\Emlid_Navio" />
       <recent name="C:\Users\B.MKR\Documents\03_Repositories\steam-jack\tests" />
-      <recent name="C:\Users\B.MKR\Documents\03_Repositories\steam-jack\venv\Lib\site-packages" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -58,7 +58,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Blinking_LED">
+  <component name="RunManager" selected="Python.Buildin_LED (1)">
     <configuration name="Blinking_LED" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="steam-jack" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -159,8 +159,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Blinking_LED" />
         <item itemvalue="Python.Buildin_LED (1)" />
+        <item itemvalue="Python.Blinking_LED" />
         <item itemvalue="Python.Emulator_v1" />
         <item itemvalue="Python.Buildin_LED" />
         <item itemvalue="Python tests.Unittests for test_Devices_Navio.test_Communicator.test_writeUDP_nonblocking" />
