@@ -125,7 +125,7 @@ atexit.register(exit_handler)
 UDP_IP = '' #socket.gethostname()
 UDP_PORT = 6789
 #----------------setting up connection and both ports----------------
-GLOBAL_SOCKET = socket.socket(socket.AF_INET,socket.SOCK_DGRAM) # UDP
+GLOBAL_SOCKET = socket.socket(socket.AF_INET,socket.SOCK_DGRAM,socket.SO_REUSEADDR) # UDP
 GLOBAL_SOCKET.bind((UDP_IP,UDP_PORT))
 #--------------------------------------------------------------------
 print('Navio2 UDP controller initialized')
