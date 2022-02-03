@@ -41,6 +41,7 @@ led = navio.leds.Led()
 
 #--------------------threads for async functions-------------------------
 def BlinkLED():
+    print('Starting blink task...')
     while True:
         led.setColor('Black')
         time.sleep(float((int(BLINK_DELAY)/2)/1000))
