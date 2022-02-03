@@ -93,7 +93,7 @@ class Communicator():
                 self.LOGGER.log(msg="UPD send: "+str(MESSAGE),type="INFO")
             except:
                 if self.DEBUG:print("UDP communication failed.")
-                self.LOGGER.log(msg="UPD failed: " + MESSAGE, type="ERROR")
+                self.LOGGER.log(msg="UPD failed: " + str(MESSAGE), type="ERROR")
 
         elif self.activeCOMM == "Serial":
             try:

@@ -9,9 +9,6 @@ import atexit
 
 
 #device-specific imports
-import navio.leds
-import navio.util
-
 #----------------------------------constants-------------------------------
 #actions
 SJ_ActionLED = "LED"
@@ -29,8 +26,8 @@ NAVIO_LED_Magenta = '6'
 NAVIO_LED_White = '7'
 
 #--------------------------GLOBAL VARIABLES------------------------------
-GLOBAL_SOCKET = None
 COLOR_ACTIVE = 'Black'
+BLINK_STATE = 'OFF'
 BLINK_DELAY = 100
 GLOBAL_LOCK_LED = Lock()
 
@@ -53,11 +50,8 @@ class perpetualTimer():
    def cancel(self):
       self.thread.cancel()
 
-
-
-
 #-------------------NAVIO2 initialization--------------------------------
-led = navio.leds.Led()
+#led = navio.leds.Led()
 
 def buildinLED(color):
     with GLOBAL_LOCK_LED:
@@ -77,6 +71,7 @@ def BlinkLED():
     elif BLINK_STATE == 'ON':
         buildinLED('black')
         BLINK_STATE = 'OFF'
+
 
 
 
@@ -112,7 +107,7 @@ def executeCommand(cmd,parameter):
         BLINK_THREAD.start()
 
     if cmd == SJ_BlinkLEDSTOP:
-        BLINK_THREAD.join()
+        BLINK_THREAD.cancel()
 
 
 
@@ -122,17 +117,18 @@ atexit.register(exit_handler)
 UDP_IP = '' #socket.gethostname()
 UDP_PORT = 6789
 #----------------setting up connection and both ports----------------
-GLOBAL_SOCKET = socket.socket(socket.AF_INET,socket.SOCK_DGRAM) # UDP
-GLOBAL_SOCKET.bind((UDP_IP,UDP_PORT))
+sock = socket.socket(socket.AF_INET,socket.SOCK_DGRAM) # UDP
+sock.bind((UDP_IP,UDP_PORT))
 #--------------------------------------------------------------------
-print('Navio2 UDP controller initialized')
+
+print('Navio2 emulator initialized')
 
 
 
 while(True):
     x=1
     try:
-        data, addr = GLOBAL_SOCKET.recvfrom(1024)
+        data, addr = sock.recvfrom(1024)
         # Parse packet
         id,cmd,value = genericRead(data)
 
