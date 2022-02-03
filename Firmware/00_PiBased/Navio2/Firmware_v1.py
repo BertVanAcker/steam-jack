@@ -25,6 +25,8 @@ class SJ_Controller():
         self.localCommunicator = SJ_helpers.SJ_HelperFunctions.DeviceCommunicator(DEBUG)
 
         atexit.register(self.exit_handler)
+        #connecting to the UDP socket
+        self.connect()
 
 
     def exit_handler(self):
@@ -86,5 +88,6 @@ class SJ_Controller():
 
 
 controller = SJ_Controller(DEBUG=True)
+
 while True:
     controller.update()
