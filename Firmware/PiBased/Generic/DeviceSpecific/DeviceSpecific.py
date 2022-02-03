@@ -6,12 +6,11 @@ if sys.platform.startswith('win'):
     print('Windows environment - imports adapted')
     from Firmware.PiBased.Generic.SJ_helpers.SJ_Constants import *
     from Firmware.PiBased.Generic.SJ_helpers.SJ_HelperFunctions import *
-elif sys.platform.startswith('linux') or sys.platform.startswith('cygwin'):
+elif sys.platform.startswith('linux') or sys.platform.startswith('cygwin')or sys.platform.startswith('darwin'):
     print('Linux environment - imports adapted')
     sys.path.append('../')
     from SJ_helpers.SJ_Constants import *
     from SJ_helpers.SJ_HelperFunctions import *
-
 
 
 class DeviceSpecificFunctions():
@@ -26,7 +25,13 @@ class DeviceSpecificFunctions():
         self.BLINK_DELAY = 100
         self.BLINK_THREAD = None
 
-    # -------------------General command functions--------------------------
+        self.localCommunicator = DeviceCommunicator(DEBUG)
+
+    # -------------------------------------------------------------------------------------
+    #
+    #      General command functions
+    #
+    # -------------------------------------------------------------------------------------
     def executeCommand(self, cmd, parameter):
 
         if cmd == SJ_ActionLED:
@@ -47,8 +52,33 @@ class DeviceSpecificFunctions():
         if cmd == SJ_BlinkLEDSTOP:
             self.BLINK_THREAD.cancel()
 
+    def update(self):
+        try:
+
+            data, addr = self.GLOBAL_SOCKET.recvfrom(1024)
+            # Parse packet
+            id, cmd, value = self.localCommunicator.genericRead(data)
+            # execute command
+            self.executeCommand(cmd, value)
+        except:
+            print("ERROR")
+
+    def connect(self):
+        # -------------------UDP initialization--------------------------------
+        UDP_IP = ''  # socket.gethostname()
+        UDP_PORT = 6789
+        # ----------------setting up connection and both ports----------------
+        self.GLOBAL_SOCKET = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)  # UDP
+        self.GLOBAL_SOCKET.bind((UDP_IP, UDP_PORT))
+        # --------------------------------------------------------------------
+        print('Navio2 emulator initialized')
 
 
+    #-------------------------------------------------------------------------------------
+    #
+    #      Device specifics
+    #
+    #-------------------------------------------------------------------------------------
     #thread-safe LED function
     def buildinLED(self,color):
         with self.GLOBAL_LOCK_LED:
@@ -63,14 +93,5 @@ class DeviceSpecificFunctions():
             self.buildinLED('Black')
             self.BLINK_STATE = 'OFF'
 
-    def connect(self):
-        # -------------------UDP initialization--------------------------------
-        UDP_IP = ''  # socket.gethostname()
-        UDP_PORT = 6789
-        # ----------------setting up connection and both ports----------------
-        self.GLOBAL_SOCKET = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)  # UDP
-        self.GLOBAL_SOCKET.bind((UDP_IP, UDP_PORT))
-        # --------------------------------------------------------------------
-        print('Navio2 emulator initialized')
 
-        return self.GLOBAL_SOCKET
+

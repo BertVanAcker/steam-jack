@@ -13,10 +13,13 @@ elif sys.platform.startswith('linux') or sys.platform.startswith('cygwin') or sy
 DEBUG = True
 controller = SJ_Controller(DEBUG=DEBUG)
 
-#function mapping
+#------------function mapping----------------------------
 deviceHandler = DeviceSpecificFunctions(DEBUG)
-controller.connect = deviceHandler.connect
 controller.executeCommand = deviceHandler.executeCommand
+controller.update = deviceHandler.update
+controller.connect = deviceHandler.connect
+#--------------------------------------------------------
 
+#start the controller
 controller.start()
 

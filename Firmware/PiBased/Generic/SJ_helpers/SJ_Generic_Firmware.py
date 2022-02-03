@@ -27,16 +27,13 @@ class SJ_Controller():
         self.GLOBAL_SOCKET = None
         #instantiate the steam-jack helpers
         self.deviceHandler = DeviceSpecificFunctions(DEBUG)
-        self.constants = SJ_Constants
-        self.localCommunicator = SJ_HelperFunctions.DeviceCommunicator(DEBUG)
 
         atexit.register(self.exit_handler)
 
 
     def start(self):
         # connecting to the UDP socket
-        self.GLOBAL_SOCKET = self.connect()
-
+        self.connect()
         while True:
             self.update()
 
@@ -45,18 +42,10 @@ class SJ_Controller():
         self.GLOBAL_SOCKET.close()
 
     def update(self):
-        try:
-            data, addr = self.GLOBAL_SOCKET.recvfrom(1024)
-            # Parse packet
-            id, cmd, value = self.localCommunicator.genericRead(data)
-            # execute command
-            self.executeCommand(cmd, value)
-        except:
-            print("ERROR")
+        self.nullFunction()
 
     def connect(self):
         self.nullFunction()
-
 
     def executeCommand(self):
         self.nullFunction()
