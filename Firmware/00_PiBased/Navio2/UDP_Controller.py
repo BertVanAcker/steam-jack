@@ -78,7 +78,7 @@ def BlinkLED():
         buildinLED(COLOR_ACTIVE)
         BLINK_STATE = 'ON'
     elif BLINK_STATE == 'ON':
-        buildinLED('black')
+        buildinLED('Black')
         BLINK_STATE = 'OFF'
 
 
