@@ -33,16 +33,7 @@ class SJ_Controller():
         print('Exit function called!')
         self.GLOBAL_SOCKET.close()
 
-    #--------------------threads for async functions-------------------------
-    def BlinkLED(self):
-        if self.BLINK_STATE == 'OFF':
-            self.deviceHandler.buildinLED(self.COLOR_ACTIVE)
-            self.BLINK_STATE = 'ON'
-        elif self.BLINK_STATE == 'ON':
-            self.deviceHandler.buildinLED('Black')
-            self.BLINK_STATE = 'OFF'
-
-
+    #-------------------General command functions--------------------------
     def executeCommand(self,cmd,parameter):
 
         if cmd == self.constants.SJ_ActionLED:
@@ -85,6 +76,15 @@ class SJ_Controller():
             self.executeCommand(cmd, value)
         except:
             print("ERROR")
+
+    # --------------------High-level device functions-------------------------
+    def BlinkLED(self):
+        if self.BLINK_STATE == 'OFF':
+            self.deviceHandler.buildinLED(self.COLOR_ACTIVE)
+            self.BLINK_STATE = 'ON'
+        elif self.BLINK_STATE == 'ON':
+            self.deviceHandler.buildinLED('Black')
+            self.BLINK_STATE = 'OFF'
 
 
 controller = SJ_Controller(DEBUG=True)
