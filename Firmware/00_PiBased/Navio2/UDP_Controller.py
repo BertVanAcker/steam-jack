@@ -4,7 +4,7 @@ import struct
 import re
 import sys
 import time
-from threading import Thread
+from threading import Thread,Lock
 
 
 #device-specific imports
@@ -41,12 +41,18 @@ led = navio.leds.Led()
 
 #--------------------threads for async functions-------------------------
 def BlinkLED():
+    lock = Lock()
     print('Starting blink task...')
     while True:
-        led.setColor('Black')
-        time.sleep(float((int(BLINK_DELAY)/2)/1000))
-        led.setColor(COLOR_ACTIVE)
-        time.sleep(float((int(BLINK_DELAY)/2)/1000))
+        lock.acquire()
+        try:
+            led.setColor('Black')
+            time.sleep(float((int(BLINK_DELAY) / 2) / 1000))
+            led.setColor(COLOR_ACTIVE)
+            time.sleep(float((int(BLINK_DELAY) / 2) / 1000))
+        finally:
+            lock.release()
+
 
 
 BLINK_THREAD = Thread(target = BlinkLED)

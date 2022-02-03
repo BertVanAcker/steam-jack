@@ -58,5 +58,5 @@ class Emlid_navio():
               :param string color: predefined color - see communcation protocol
               :param int color: predefined color - see communcation protocol
         """
-        self.communicator.genericWrite(id=1, cmd=Communicator_Constants.SJ_BlinkLEDSTOP)
+        self.communicator.genericWrite(id=1, cmd=Communicator_Constants.SJ_BlinkLEDSTOP,parameter=0)
 
