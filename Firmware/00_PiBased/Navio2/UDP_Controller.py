@@ -30,6 +30,7 @@ NAVIO_LED_White = '7'
 #--------------------------GLOBAL VARIABLES------------------------------
 COLOR_ACTIVE = 'Black'
 BLINK_DELAY = 100
+GLOBAL_LOCK_LED = Lock()
 
 #-------------------NAVIO2 initialization--------------------------------
 led = navio.leds.Led()
@@ -38,20 +39,20 @@ led = navio.leds.Led()
 
 
 
+def buildinLED(color):
+    with GLOBAL_LOCK_LED:
+        led.setColor(color)
+
+
 
 #--------------------threads for async functions-------------------------
 def BlinkLED():
-    lock = Lock()
     print('Starting blink task...')
     while True:
-        lock.acquire()
-        try:
-            led.setColor('Black')
-            time.sleep(float((int(BLINK_DELAY) / 2) / 1000))
-            led.setColor(COLOR_ACTIVE)
-            time.sleep(float((int(BLINK_DELAY) / 2) / 1000))
-        finally:
-            lock.release()
+        buildinLED('Black')
+        time.sleep(float((int(BLINK_DELAY) / 2) / 1000))
+        buildinLED(COLOR_ACTIVE)
+        time.sleep(float((int(BLINK_DELAY) / 2) / 1000))
 
 
 
@@ -74,13 +75,13 @@ def executeCommand(cmd,parameter):
 
     if cmd == SJ_ActionLED:
         if parameter == NAVIO_LED_Red:
-            led.setColor('Red')
+            buildinLED('Red')
             COLOR_ACTIVE = 'Red'
         if parameter == NAVIO_LED_Yellow:
-            led.setColor('Yellow')
+            buildinLED('Yellow')
             COLOR_ACTIVE = 'Yellow'
         if parameter == NAVIO_LED_Green:
-            led.setColor('Green')
+            buildinLED('Green')
             COLOR_ACTIVE = 'Green'
 
     if cmd == SJ_BlinkLED:
