@@ -61,6 +61,8 @@ def genericRead(data):
         return matches[0][0],matches[0][1],matches[0][2]
 
 def executeCommand(cmd,parameter):
+    global COLOR_ACTIVE
+    global BLINK_DELAY
 
     if cmd == SJ_ActionLED:
         if parameter == NAVIO_LED_Red:
