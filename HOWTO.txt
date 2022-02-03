@@ -1,0 +1,89 @@
+
+Howto distribute the STEAM-JACK interface (via PyPi)
+--------------------------------------
+
+in terminal -> cd C:\Users\B.MKR\Documents\03_Repositories\steam-jack
+
+- py -m pip install build
+- pip install pyparsing==3.0.5  !!pyparser downgrade needed!!
+- py -m build --sdist
+- twine check dist/*
+- twine upload dist/*   -> username = __token__ password = pypi-AgEIcHlwaS5vcmcCJDRkN2M5ZmMyLTkyN2MtNGE1MC1iMGU4LTYwYTVkYzljOGE4YwACJXsicGVybWlzc2lvbnMiOiAidXNlciIsICJ2ZXJzaW9uIjogMX0AAAYgd8BBsblzDcYFXTzAyuOjJcBjBrAgN3OoMkaoSdAIQuo
+
+Installing the distribution
+---------------------------
+- pip install steam-jack
+
+
+See: https://packaging.python.org/en/latest/guides/distributing-packages-using-setuptools/#pure-python-wheel
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+OBSOLETE
+-------------------------------------------------------------------------------------------
+#building using *egg-info
+-------------------------
+
+- py setup.py bdist_egg
+
+#building the "developer-mode" KB API package
+---------------------------------------------
+
+- in cmd -> cd C:\Users\B.MKR\Documents\06_PhD\03_Projects\03_PaCo\paco-workspace\knowledgebase-interface
+- pip install -e ./ --user
+-> from Interface_KB import KB_Interface
+
+#Packaging the KB API package
+-----------------------------
+
+- in cmd -> cd C:\Users\B.MKR\Documents\06_PhD\03_Projects\03_PaCo\paco-workspace\knowledgebase-interface
+- py -m pip install build
+
+
+!!pyparser downgrade needed!!
+- pip install pyparsing==3.0.5
+- py -m build --sdist
+
+-> making a pure python built package
+
+- py -m build --wheel
+
+#install via wheel file
+-----------------------
+
+- pip install C:\Users\B.MKR\Documents\06_PhD\03_Projects\03_PaCo\paco-workspace\knowledgebase-interface\dist\Interface_KB-0.1.0-py3-none-any.whl --user
+
+#install via tar.gz
+-----------------------
+
+- pip install C:\Users\B.MKR\Documents\06_PhD\03_Projects\03_PaCo\paco-workspace\knowledgebase-interface\dist\Interface_KB-0.1.0.tar.gz --user
+
+#PyPI distribution
+------------------
+
+TOKEN : pypi-AgEIcHlwaS5vcmcCJDRkN2M5ZmMyLTkyN2MtNGE1MC1iMGU4LTYwYTVkYzljOGE4YwACJXsicGVybWlzc2lvbnMiOiAidXNlciIsICJ2ZXJzaW9uIjogMX0AAAYgd8BBsblzDcYFXTzAyuOjJcBjBrAgN3OoMkaoSdAIQuo
+
+username = __token__
+password = pypi-AgEIcHlwaS5vcmcCJDRkN2M5ZmMyLTkyN2MtNGE1MC1iMGU4LTYwYTVkYzljOGE4YwACJXsicGVybWlzc2lvbnMiOiAidXNlciIsICJ2ZXJzaW9uIjogMX0AAAYgd8BBsblzDcYFXTzAyuOjJcBjBrAgN3OoMkaoSdAIQuo
+
+
+#Install via pypi
+-----------------
+
+- pip install Interface-KB
