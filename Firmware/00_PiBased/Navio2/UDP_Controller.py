@@ -60,8 +60,10 @@ class perpetualTimer():
 led = navio.leds.Led()
 
 def buildinLED(color):
+    global led
     with GLOBAL_LOCK_LED:
         print('changing the build-in LED color:'+ color)
+        led.setColor(color)
 
 def exit_handler():
     global GLOBAL_SOCKET

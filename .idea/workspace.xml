@@ -4,9 +4,7 @@
     <list default="true" id="17dbf23a-a872-4962-90f7-2944e55d987e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Firmware/00_PiBased/Navio2/UDP_Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Firmware/00_PiBased/Navio2/UDP_Controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples/Development_boards/Emlid_Navio/Blinking_LED.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Development_boards/Emlid_Navio/Blinking_LED.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/Development_boards/Emlid_Navio/Buildin_LED.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Development_boards/Emlid_Navio/Buildin_LED.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/steam_jack/Communicator/Communicator.py" beforeDir="false" afterPath="$PROJECT_DIR$/steam_jack/Communicator/Communicator.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -61,7 +59,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Blinking_LED">
+  <component name="RunManager" selected="Python.Buildin_LED (1)">
     <configuration name="Blinking_LED" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="steam-jack" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -162,9 +160,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Buildin_LED (1)" />
         <item itemvalue="Python.Blinking_LED" />
         <item itemvalue="Python.Emulator_v1" />
-        <item itemvalue="Python.Buildin_LED (1)" />
         <item itemvalue="Python.Buildin_LED" />
         <item itemvalue="Python tests.Unittests for test_Devices_Navio.test_Communicator.test_writeUDP_nonblocking" />
       </list>
