@@ -2,11 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="17dbf23a-a872-4962-90f7-2944e55d987e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/steam-jack.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/steam-jack.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Firmware/00_PiBased/Navio2/Firmware_v1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Firmware/00_PiBased/Navio2/Firmware_v1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Firmware/00_PiBased/Navio2/Firmware_v1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Firmware/PiBased/Navio2/Firmware_v1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Firmware/00_PiBased/Navio2/Readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Firmware/PiBased/Navio2/Readme.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Firmware/00_PiBased/Navio2/SJ_helpers/SJ_Constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/Firmware/PiBased/Navio2/SJ_helpers/SJ_Constants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Firmware/00_PiBased/Navio2/SJ_helpers/SJ_DeviceSpecificFunctions.py" beforeDir="false" afterPath="$PROJECT_DIR$/Firmware/PiBased/Navio2/SJ_helpers/SJ_DeviceSpecificFunctions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Firmware/00_PiBased/Navio2/SJ_helpers/SJ_HelperFunctions.py" beforeDir="false" afterPath="$PROJECT_DIR$/Firmware/PiBased/Navio2/SJ_helpers/SJ_HelperFunctions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Firmware/00_PiBased/Navio2/SJ_helpers/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Firmware/PiBased/Navio2/SJ_helpers/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Firmware/00_PiBased/Navio2/UDP_Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Firmware/PiBased/Navio2/UDP_Controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Firmware/00_PiBased/Navio2/navio/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/Firmware/PiBased/Navio2/navio/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Firmware/00_PiBased/Navio2/navio/adc.py" beforeDir="false" afterPath="$PROJECT_DIR$/Firmware/PiBased/Navio2/navio/adc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Firmware/00_PiBased/Navio2/navio/leds.py" beforeDir="false" afterPath="$PROJECT_DIR$/Firmware/PiBased/Navio2/navio/leds.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Firmware/00_PiBased/Navio2/navio/lsm9ds1.py" beforeDir="false" afterPath="$PROJECT_DIR$/Firmware/PiBased/Navio2/navio/lsm9ds1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Firmware/00_PiBased/Navio2/navio/mpu9250.py" beforeDir="false" afterPath="$PROJECT_DIR$/Firmware/PiBased/Navio2/navio/mpu9250.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Firmware/00_PiBased/Navio2/navio/ms5611.py" beforeDir="false" afterPath="$PROJECT_DIR$/Firmware/PiBased/Navio2/navio/ms5611.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Firmware/00_PiBased/Navio2/navio/pwm.py" beforeDir="false" afterPath="$PROJECT_DIR$/Firmware/PiBased/Navio2/navio/pwm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Firmware/00_PiBased/Navio2/navio/rcinput.py" beforeDir="false" afterPath="$PROJECT_DIR$/Firmware/PiBased/Navio2/navio/rcinput.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Firmware/00_PiBased/Navio2/navio/ublox.py" beforeDir="false" afterPath="$PROJECT_DIR$/Firmware/PiBased/Navio2/navio/ublox.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Firmware/00_PiBased/Navio2/navio/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/Firmware/PiBased/Navio2/navio/util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Firmware/00_PiBased/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/Firmware/PiBased/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/examples/Development_boards/Emlid_Navio/Blinking_LED.py" beforeDir="false" afterPath="$PROJECT_DIR$/examples/Development_boards/Emlid_Navio/Blinking_LED.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/steam_jack/DeviceLibrary/Emlid_navio.py" beforeDir="false" afterPath="$PROJECT_DIR$/steam_jack/DeviceLibrary/Emlid_navio.py" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,33 +50,22 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Firmware/00_PiBased/Navio2/SJ_helpers" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Firmware/00_PiBased/Generic/SJ_helpers" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\B.MKR\Documents\03_Repositories\steam-jack\examples\Development_boards\Emlid_Navio\Notebooks" />
-      <recent name="C:\Users\B.MKR\Documents\03_Repositories\steam-jack\dist_previous" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Firmware/00_PiBased/Generic/SJ_helpers" />
+      <recent name="$PROJECT_DIR$/Firmware/00_PiBased/Generic" />
       <recent name="C:\Users\B.MKR\Documents\03_Repositories\steam-jack\Firmware\00_PiBased\Navio2\SJ_helpers" />
       <recent name="C:\Users\B.MKR\Documents\03_Repositories\steam-jack\Firmware\00_PiBased\Navio2" />
       <recent name="C:\Users\B.MKR\Documents\03_Repositories\steam-jack\examples\Development_boards\Emlid_Navio" />
-      <recent name="C:\Users\B.MKR\Documents\03_Repositories\steam-jack\steam_jack\DeviceLibrary" />
-      <recent name="C:\Users\B.MKR\Documents\03_Repositories\steam-jack\examples\Emlid_Navio" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Firmware/00_PiBased/Generic/DeviceSpecific" />
+      <recent name="C:\Users\B.MKR\Documents\03_Repositories\steam-jack\examples\Development_boards\Emlid_Navio\Notebooks" />
+      <recent name="C:\Users\B.MKR\Documents\03_Repositories\steam-jack\dist_previous" />
+    </key>
   </component>
   <component name="RunManager" selected="Python.Buildin_LED (1)">
     <configuration name="Blinking_LED" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -144,31 +152,38 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test_Devices_Navio.test_Communicator.test_writeUDP_nonblocking" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+    <configuration name="Firmware_v1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="steam-jack" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Firmware/PiBased/Generic" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_Devices_Navio.test_Communicator.test_writeUDP_nonblocking&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Firmware/PiBased/Generic/Firmware_v1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.Buildin_LED (1)" />
         <item itemvalue="Python.Blinking_LED" />
+        <item itemvalue="Python.Firmware_v1" />
         <item itemvalue="Python.Emulator_v1" />
         <item itemvalue="Python.Buildin_LED" />
-        <item itemvalue="Python tests.Unittests for test_Devices_Navio.test_Communicator.test_writeUDP_nonblocking" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="false" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -192,5 +207,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

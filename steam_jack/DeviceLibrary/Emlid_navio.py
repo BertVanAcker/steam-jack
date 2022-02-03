@@ -5,7 +5,7 @@
 #
 #	Description:	Device class representing the emlid navio 2
 #
-#   Note:           Emlid firmware under Firmware/00_PiBased/Navio2
+#   Note:           Emlid firmware under Firmware/PiBased/Navio2
 ###################################################################################
 #imports
 import time
