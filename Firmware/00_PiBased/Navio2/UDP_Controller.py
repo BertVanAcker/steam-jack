@@ -31,6 +31,7 @@ NAVIO_LED_White = '7'
 #--------------------------GLOBAL VARIABLES------------------------------
 GLOBAL_SOCKET = None
 COLOR_ACTIVE = 'Black'
+BLINK_STATE = 'OFF'
 BLINK_DELAY = 100
 GLOBAL_LOCK_LED = Lock()
 
