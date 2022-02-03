@@ -4,6 +4,8 @@ import struct
 import re
 import sys
 import time
+from threading import Thread
+
 
 #device-specific imports
 import navio.leds
@@ -11,7 +13,8 @@ import navio.util
 
 #----------------------------------constants-------------------------------
 #actions
-NAVIO_ActionLED = "LED"
+SJ_ActionLED = "LED"
+SJ_BlinkLED = "BLK"
 
 # LED colors
 NAVIO_LED_Black = '0'
@@ -23,9 +26,28 @@ NAVIO_LED_Cyan = '5'
 NAVIO_LED_Magenta = '6'
 NAVIO_LED_White = '7'
 
+#--------------------------GLOBAL VARIABLES------------------------------
+COLOR_ACTIVE = 'Black'
+BLINK_DELAY = 100
+
 #-------------------NAVIO2 initialization--------------------------------
 led = navio.leds.Led()
 
+
+
+
+
+
+#--------------------threads for async functions-------------------------
+def BlinkLED():
+    while True:
+        led.setColor(COLOR_ACTIVE)
+        time.sleep((BLINK_DELAY/2)/1000)
+        led.setColor('Black')
+        time.sleep((BLINK_DELAY/2)/1000)
+
+
+BLINK_THREAD = Thread(target = BlinkLED)
 
 
 
@@ -40,14 +62,20 @@ def genericRead(data):
 
 def executeCommand(cmd,parameter):
 
-    if cmd == NAVIO_ActionLED:
+    if cmd == SJ_ActionLED:
         if parameter == NAVIO_LED_Red:
             led.setColor('Red')
+            COLOR_ACTIVE = 'Red'
         if parameter == NAVIO_LED_Yellow:
             led.setColor('Yellow')
+            COLOR_ACTIVE = 'Yellow'
         if parameter == NAVIO_LED_Green:
             led.setColor('Green')
+            COLOR_ACTIVE = 'Green'
 
+    if cmd == SJ_BlinkLED:
+        BLINK_DELAY = parameter
+        BLINK_THREAD.start()
 
 
 

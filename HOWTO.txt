@@ -8,7 +8,7 @@ in terminal -> cd C:\Users\B.MKR\Documents\03_Repositories\steam-jack
 - pip install pyparsing==3.0.5  !!pyparser downgrade needed!!
 - py -m build --sdist
 - twine check dist/*
-- twine upload dist/*   -> username = __token__ password = pypi-AgEIcHlwaS5vcmcCJDRkN2M5ZmMyLTkyN2MtNGE1MC1iMGU4LTYwYTVkYzljOGE4YwACJXsicGVybWlzc2lvbnMiOiAidXNlciIsICJ2ZXJzaW9uIjogMX0AAAYgd8BBsblzDcYFXTzAyuOjJcBjBrAgN3OoMkaoSdAIQuo
+- twine upload dist/*   -> username = __token__ password = pypi-AgEIcHlwaS5vcmcCJDRlYjgxOTZlLTBkYTctNDIxMS1hYmI4LTAyMTIyMzJkZjQxZgACJXsicGVybWlzc2lvbnMiOiAidXNlciIsICJ2ZXJzaW9uIjogMX0AAAYg7SUuMETK9XWMrAd5N955D6J0Ky03O5QY28LFx4MnWro
 
 Installing the distribution
 ---------------------------

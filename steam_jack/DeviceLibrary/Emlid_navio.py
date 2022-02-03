@@ -7,6 +7,9 @@
 #
 #   Note:           Emlid firmware under Firmware/00_PiBased/Navio2
 ###################################################################################
+#imports
+import time
+
 from steam_jack.Communicator import Communicator,Communicator_Constants
 from steam_jack.Logger import Logger
 
@@ -33,10 +36,20 @@ class Emlid_navio():
 
     def buildinLED(self, color):
         """
-              Function to set the color of the buildin LED- Non-blocking
+              Function to set the color of the buildin LED - Non-blocking
 
               :param string color: predefined color - see communcation protocol
         """
         self.communicator.genericWrite(id=1, cmd=Communicator_Constants.SJ_ActionLED,parameter=color)
 
+
+    def blinkLED(self,delay):
+        """
+              Function to blink the buildin LED with a specific color for a given time - blocking
+
+              :param string color: predefined color - see communcation protocol
+              :param int color: predefined color - see communcation protocol
+              :param int delay: delay in ms
+        """
+        self.communicator.genericWrite(id=1, cmd=Communicator_Constants.SJ_BlinkLED,parameter=delay)
 
