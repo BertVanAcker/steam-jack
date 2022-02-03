@@ -19,6 +19,7 @@ SJ_CommandEnd = "\r"
 #COMMAND constants
 SJ_ActionLED = "LED"
 SJ_BlinkLED = "BLK"
+SJ_BlinkLEDSTOP = "NBLK"
 
 # Navio2 constants
 NAVIO_LED_Black = '0'

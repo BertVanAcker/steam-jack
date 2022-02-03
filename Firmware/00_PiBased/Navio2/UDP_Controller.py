@@ -15,6 +15,7 @@ import navio.util
 #actions
 SJ_ActionLED = "LED"
 SJ_BlinkLED = "BLK"
+SJ_BlinkLEDSTOP = "NBLK"
 
 # LED colors
 NAVIO_LED_Black = '0'
@@ -41,10 +42,10 @@ led = navio.leds.Led()
 #--------------------threads for async functions-------------------------
 def BlinkLED():
     while True:
-        led.setColor(COLOR_ACTIVE)
-        time.sleep((BLINK_DELAY/2)/1000)
         led.setColor('Black')
-        time.sleep((BLINK_DELAY/2)/1000)
+        time.sleep(float((int(BLINK_DELAY)/2)/1000))
+        led.setColor(COLOR_ACTIVE)
+        time.sleep(float((int(BLINK_DELAY)/2)/1000))
 
 
 BLINK_THREAD = Thread(target = BlinkLED)
@@ -78,6 +79,9 @@ def executeCommand(cmd,parameter):
     if cmd == SJ_BlinkLED:
         BLINK_DELAY = parameter
         BLINK_THREAD.start()
+
+    if cmd == SJ_BlinkLEDSTOP:
+        BLINK_THREAD.join()
 
 
 

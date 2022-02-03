@@ -1,4 +1,5 @@
 #imports
+import time
 from steam_jack.DeviceLibrary import Emlid_navio
 from steam_jack.Communicator.Communicator_Constants import *
 
@@ -10,5 +11,7 @@ device.buildinLED(NAVIO_LED_Green)
 
 #blinking the build-in LED
 device.blinkLED(delay=1000)
+time.sleep(10)
+device.stopBlinkLED()
 
 device.deactivate()

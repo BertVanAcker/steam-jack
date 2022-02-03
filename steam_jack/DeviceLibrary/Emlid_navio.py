@@ -45,11 +45,19 @@ class Emlid_navio():
 
     def blinkLED(self,delay):
         """
-              Function to blink the buildin LED with a specific color for a given time - blocking
+              Function to blink the build-in LED with the active color - non-blocking
+
+              :param int delay: delay in ms
+        """
+        self.communicator.genericWrite(id=1, cmd=Communicator_Constants.SJ_BlinkLED,parameter=delay)
+
+    def stopBlinkLED(self):
+        """
+              Function to stop blinking the buildin LED with the active color - non-blocking
 
               :param string color: predefined color - see communcation protocol
               :param int color: predefined color - see communcation protocol
               :param int delay: delay in ms
         """
-        self.communicator.genericWrite(id=1, cmd=Communicator_Constants.SJ_BlinkLED,parameter=delay)
+        self.communicator.genericWrite(id=1, cmd=Communicator_Constants.SJ,parameter=delay)
 
