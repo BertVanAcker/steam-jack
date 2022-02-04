@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="17dbf23a-a872-4962-90f7-2944e55d987e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Firmware/PiBased/Generic/SJ_helpers/SJ_Generic_Firmware.py" beforeDir="false" afterPath="$PROJECT_DIR$/Firmware/PiBased/Generic/SJ_helpers/SJ_Generic_Firmware.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Firmware/PiBased/Navio2_generic/DeviceSpecific/DeviceSpecific.py" beforeDir="false" afterPath="$PROJECT_DIR$/Firmware/PiBased/Navio2_generic/DeviceSpecific/DeviceSpecific.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

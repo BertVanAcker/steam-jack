@@ -78,9 +78,7 @@ class SJ_Controller():
         if cmd == SJ_Constants.SJ_BlinkLEDSTOP:
             self.SJ_BlinkLEDSTOP_function(parameter)
         if cmd == SJ_Constants.SJ_FetchTemperature:
-            if self.DEBUG: print("Fetch temperature")
             temperature = self.SJ_FetchTemperature_function(parameter)
-            if self.DEBUG: print("scaled temperature: " + str(temperature))
             self.sendResponse(1,SJ_Constants.SJ_Temperature,int(temperature))
 
     def sendResponse(self,id,cmd,parameter):
@@ -104,4 +102,5 @@ class SJ_Controller():
 
     def SJ_FetchTemperature_function(self):
         self.nullFunction()
+        return -1
 
