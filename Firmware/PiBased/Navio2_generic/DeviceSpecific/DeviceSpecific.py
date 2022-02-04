@@ -54,7 +54,7 @@ class DeviceSpecificFunctions():
             self.buildinLED('Black')
             self.BLINK_STATE = 'OFF'
 
-    def ActionLED_function(self,parameter):
+    def ActionLED_function(self,parameter=None):
         if parameter == NAVIO_LED_Red:
             self.buildinLED('Red')
             self.COLOR_ACTIVE = 'Red'
@@ -65,15 +65,15 @@ class DeviceSpecificFunctions():
             self.buildinLED('Green')
             self.COLOR_ACTIVE = 'Green'
 
-    def BlinkLED_function(self,parameter):
+    def BlinkLED_function(self,parameter=None):
         self.BLINK_DELAY = int(parameter)
         self.BLINK_THREAD = perpetualTimer(self.BLINK_DELAY, self.BlinkLED)  # periodically update sensor!
         self.BLINK_THREAD.start()
 
-    def BlinkLEDSTOP_function(self):
+    def BlinkLEDSTOP_function(self,parameter=None):
         self.BLINK_THREAD.cancel()
 
-    def FetchTemperature_function(self):
+    def FetchTemperature_function(self,parameter=None):
         self.baro.refreshTemperature()
         time.sleep(0.01)  # Waiting for temperature data ready 10ms
         self.baro.readTemperature()
