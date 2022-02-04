@@ -74,10 +74,12 @@ class DeviceSpecificFunctions():
         self.BLINK_THREAD.cancel()
 
     def FetchTemperature_function(self,parameter=None):
+        if self.DEBUG:print("read temperature")
         self.baro.refreshTemperature()
         time.sleep(0.01)  # Waiting for temperature data ready 10ms
         self.baro.readTemperature()
         temperature = self.baro.TEMP
+        if self.DEBUG: print("temperature: " +str(temperature))
         temperature_scaled = mapRange(value=temperature,inMin=-40, inMax=50, outMin=0, outMax=1000)
         return temperature_scaled
 
