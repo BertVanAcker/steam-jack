@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="17dbf23a-a872-4962-90f7-2944e55d987e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Firmware/PiBased/Generic/SJ_helpers/SJ_Generic_Firmware.py" beforeDir="false" afterPath="$PROJECT_DIR$/Firmware/PiBased/Generic/SJ_helpers/SJ_Generic_Firmware.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Firmware/PiBased/Navio2_generic/SJ_helpers/SJ_Generic_Firmware.py" beforeDir="false" afterPath="$PROJECT_DIR$/Firmware/PiBased/Navio2_generic/SJ_helpers/SJ_Generic_Firmware.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Firmware/PiBased/Navio2_generic/DeviceSpecific/DeviceSpecific.py" beforeDir="false" afterPath="$PROJECT_DIR$/Firmware/PiBased/Navio2_generic/DeviceSpecific/DeviceSpecific.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,9 +39,9 @@
       <recent name="C:\Users\B.MKR\Documents\03_Repositories\steam-jack\dist_previous" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\B.MKR\Documents\03_Repositories\steam-jack\Firmware\PiBased\Navio2_generic\DeviceSpecific" />
       <recent name="C:\Users\B.MKR\Documents\03_Repositories\steam-jack\Firmware\PiBased\Navio2_generic\SJ_helpers" />
       <recent name="C:\Users\B.MKR\Documents\03_Repositories\steam-jack\Firmware\PiBased\Generic\DeviceSpecific" />
-      <recent name="C:\Users\B.MKR\Documents\03_Repositories\steam-jack\Firmware\PiBased\Navio2_generic\DeviceSpecific" />
       <recent name="C:\Users\B.MKR\Documents\03_Repositories\steam-jack\examples\Development_boards\Emlid_Navio" />
       <recent name="$PROJECT_DIR$/Firmware/PiBased/Navio2" />
     </key>

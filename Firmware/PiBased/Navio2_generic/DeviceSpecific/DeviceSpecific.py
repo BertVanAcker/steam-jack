@@ -32,7 +32,7 @@ class DeviceSpecificFunctions():
         self.led = navio.leds.Led()
 
         self.baro = navio.ms5611.MS5611()
-        self.barobaro.initialize()
+        self.baro.initialize()
 
     #-------------------------------------------------------------------------------------
     #
