@@ -30,7 +30,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Firmware/PiBased/Generic/DeviceSpecific" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Firmware/PiBased/Navio2_generic/SJ_helpers" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -40,11 +40,11 @@
       <recent name="C:\Users\B.MKR\Documents\03_Repositories\steam-jack\dist_previous" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\B.MKR\Documents\03_Repositories\steam-jack\Firmware\PiBased\Navio2_generic\SJ_helpers" />
+      <recent name="C:\Users\B.MKR\Documents\03_Repositories\steam-jack\Firmware\PiBased\Generic\DeviceSpecific" />
+      <recent name="C:\Users\B.MKR\Documents\03_Repositories\steam-jack\Firmware\PiBased\Navio2_generic\DeviceSpecific" />
       <recent name="C:\Users\B.MKR\Documents\03_Repositories\steam-jack\examples\Development_boards\Emlid_Navio" />
       <recent name="$PROJECT_DIR$/Firmware/PiBased/Navio2" />
-      <recent name="$PROJECT_DIR$/Firmware/PiBased/Navio2/SJ_helpers" />
-      <recent name="$PROJECT_DIR$/examples/Emulators/Emlid_Navio" />
-      <recent name="$PROJECT_DIR$/Firmware/00_PiBased/Generic/SJ_helpers" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -207,7 +207,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Firmware/PiBased/Generic/SJ_helpers/SJ_Generic_Firmware.py</url>
-          <line>81</line>
+          <line>80</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>

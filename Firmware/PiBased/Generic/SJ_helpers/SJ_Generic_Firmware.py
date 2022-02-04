@@ -9,14 +9,13 @@ if sys.platform.startswith('win'):
     print('Windows environment - imports adapted')
     from Firmware.PiBased.Generic.SJ_helpers import SJ_Constants
     from Firmware.PiBased.Generic.SJ_helpers import SJ_HelperFunctions
-    from Firmware.PiBased.Generic.DeviceSpecific.DeviceSpecific import DeviceSpecificFunctions
+
 elif sys.platform.startswith('linux') or sys.platform.startswith('cygwin') or sys.platform.startswith('darwin'):
     print('Linux environment - imports adapted')
     sys.path.append('../')
-    sys.path.append('../../')
     from SJ_helpers import SJ_Constants
     from SJ_helpers import SJ_HelperFunctions
-    from ..DeviceSpecific.DeviceSpecific import DeviceSpecificFunctions
+
 
 
 
