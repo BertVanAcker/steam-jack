@@ -81,6 +81,7 @@ class DeviceSpecificFunctions():
         temperature = self.baro.TEMP
         if self.DEBUG: print("temperature: " +str(temperature))
         temperature_scaled = mapRange(value=temperature,inMin=-40, inMax=50, outMin=0, outMax=1000)
+        if self.DEBUG: print("Scaled: " + str(temperature_scaled))
         return temperature_scaled
 
 
