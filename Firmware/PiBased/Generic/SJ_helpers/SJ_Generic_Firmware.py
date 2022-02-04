@@ -78,11 +78,10 @@ class SJ_Controller():
         if cmd == SJ_Constants.SJ_BlinkLEDSTOP:
             self.SJ_BlinkLEDSTOP_function(parameter)
         if cmd == SJ_Constants.SJ_FetchTemperature:
-            temperature = self.SJ_FetchTemperature_function(parameter)
-            self.sendResponse(1,SJ_Constants.SJ_Temperature,int(temperature))
+            temp = self.SJ_FetchTemperature_function(parameter)
+            self.sendResponse(1,SJ_Constants.SJ_Temperature,int(temp))
 
     def sendResponse(self,id,cmd,parameter):
-
         message = self.localCommunicator.composeMessage(id,cmd,parameter)
         if self.DEBUG: print("message composed: "+message)
         udp_socket_out = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
