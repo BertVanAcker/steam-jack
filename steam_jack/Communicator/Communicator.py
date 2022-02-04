@@ -7,6 +7,7 @@
 ###################################################################################
 
 #imports
+import re
 import socket
 import serial
 from .Communicator_Constants import *
@@ -70,7 +71,6 @@ class Communicator():
         # activate an ingoing UDP
         self.udp_socket_in.close()
 
-
     def genericWrite(self,id,cmd,parameter=None):
         """
               Function to compose & write a steam_jack command to the communication bus - Non-blocking
@@ -82,10 +82,7 @@ class Communicator():
               :return bool writeSuccess: successfull bus write identification (-1 = error)
         """
         #compose the message - independent from active communication
-        if parameter is not None:
-            MESSAGE = (SJ_CommandStart + str(id) + cmd + str(parameter) + SJ_CommandEnd).encode('utf-8')
-        else:
-            MESSAGE = ("#" + str(id) + cmd + "\r").encode('utf-8')
+        MESSAGE = self.composeMessage(id,cmd,parameter)
 
         if self.activeCOMM == "UDP":
             try:
@@ -102,3 +99,89 @@ class Communicator():
             except:
                 if self.DEBUG:print("Serial communication failed.")
                 self.LOGGER.log(msg="Serial failed: " + str(MESSAGE), type="ERROR")
+
+    def genericWrite_blocking(self,id,cmd,parameter=None):
+        """
+              Function to compose & write a steam_jack command to the communication bus - blocking
+
+              :param string id: Name identifier of the targetted device
+              :param string cmd: Command identifier
+              :param list parameters: parameterList
+
+              :return bool writeSuccess: successfull bus write identification (-1 = error)
+        """
+        #compose the message - independent from active communication
+        MESSAGE = self.composeMessage(id,cmd,parameter)
+
+        if self.activeCOMM == "UDP":
+            try:
+                self.udp_socket_out.sendto(MESSAGE, (self.UDP_IP, self.UDP_PORT))
+                self.LOGGER.log(msg="UPD send: "+str(MESSAGE),type="INFO")
+            except:
+                if self.DEBUG:print("UDP communication failed.")
+                self.LOGGER.log(msg="UPD failed: " + str(MESSAGE), type="ERROR")
+
+            #wait for a response on port 5000
+            RESPONSE = 0
+            while not RESPONSE:
+                try:
+                    data, addr = self.udp_socket_in.recvfrom(1024)
+                    # Parse packet
+                    id, cmd, value = self.interpretMessage(data)
+                    RESPONSE=1
+                    return id, cmd, value
+                except:
+                    if self.DEBUG:print("ERROR")
+
+        elif self.activeCOMM == "Serial":
+            try:
+                self.Serial_socket.write(MESSAGE)
+                self.LOGGER.log(msg="Serial send:" + MESSAGE, type="INFO")
+            except:
+                if self.DEBUG:print("Serial communication failed.")
+                self.LOGGER.log(msg="Serial failed: " + str(MESSAGE), type="ERROR")
+
+            # wait for a response on serial port
+            RESPONSE = 0
+            while not RESPONSE:
+                try:
+                    data = self.Serial_socket.readline()
+                    # Parse packet
+                    id, cmd, value = self.interpretMessage(data)
+                    RESPONSE = 1
+                    return id, cmd, value
+                except:
+                    if self.DEBUG: print("ERROR")
+
+    def interpretMessage(self,data):
+        """
+              Function to interpret a steam-jack message
+
+              :param string data: steam-jack message
+
+              :return int id: identifier of the message
+              :return string cmd: command id of the message
+              :return int parameter: parameter of the message
+        """
+        if self.DEBUG:print(data)
+        matches = re.findall("(\d{1,3})([A-Z]{1,4})(-?\d{1,18})", data.decode('utf-8'), re.I)
+        if matches is None:
+            return -1
+        else:
+            return matches[0][0],matches[0][1],matches[0][2]
+
+    def composeMessage(self,id,cmd,parameter):
+        """
+              Function to compose a steam-jack message
+
+              :param int id: identifier of the message
+              :param string cmd: command id of the message
+              :param int parameter: parameter of the message
+
+              :return string data: steam-jack message
+        """
+        if parameter is not None:
+            MESSAGE = (SJ_CommandStart + str(id) + cmd + str(parameter) + SJ_CommandEnd).encode('utf-8')
+        else:
+            MESSAGE = ("#" + str(id) + cmd + "\r").encode('utf-8')
+        return MESSAGE

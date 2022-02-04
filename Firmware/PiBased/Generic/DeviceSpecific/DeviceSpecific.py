@@ -60,8 +60,14 @@ class DeviceSpecificFunctions():
         self.BLINK_THREAD = perpetualTimer(self.BLINK_DELAY, self.BlinkLED)  # periodically update sensor!
         self.BLINK_THREAD.start()
 
-    def BlinkLEDSTOP_function(self,parameter):
+    def BlinkLEDSTOP_function(self):
         self.BLINK_THREAD.cancel()
+
+    def FetchTemperature_function(self):
+        #dummy temperature -40<->50
+        temperature = 22.5
+        temperature_scaled = mapRange(value=temperature,inMin=-40, inMax=50, outMin=0, outMax=1000)
+        return temperature_scaled
 
 
 

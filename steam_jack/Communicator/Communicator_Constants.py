@@ -20,6 +20,9 @@ SJ_CommandEnd = "\r"
 SJ_ActionLED = "LED"
 SJ_BlinkLED = "BLK"
 SJ_BlinkLEDSTOP = "NBLK"
+SJ_FetchTemperature = "ATMP"
+#response
+SJ_Temperature = "RTMP"
 
 # Navio2 constants
 NAVIO_LED_Black = '0'

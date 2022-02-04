@@ -18,6 +18,7 @@ deviceHandler = DeviceSpecificFunctions(DEBUG)
 controller.SJ_ActionLED_function = deviceHandler.ActionLED_function
 controller.SJ_BlinkLED_function = deviceHandler.BlinkLED_function
 controller.SJ_BlinkLEDSTOP_function = deviceHandler.BlinkLEDSTOP_function
+controller.SJ_FetchTemperature_function = deviceHandler.FetchTemperature_function
 #--------------------------------------------------------
 
 #start the controller

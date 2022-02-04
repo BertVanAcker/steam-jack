@@ -55,8 +55,23 @@ class Emlid_navio():
         """
               Function to stop blinking the buildin LED with the active color - non-blocking
 
-              :param string color: predefined color - see communcation protocol
-              :param int color: predefined color - see communcation protocol
         """
         self.communicator.genericWrite(id=1, cmd=Communicator_Constants.SJ_BlinkLEDSTOP,parameter=0)
 
+    def getTemperature(self):
+        """
+              Function to fetch the temperature - blocking
+
+              :return float temperature: temperature value (-40 <-> +50)
+
+        """
+        ID,CMD,temperature = self.communicator.genericWrite_blocking(id=1, cmd=Communicator_Constants.SJ_FetchTemperature,parameter=0)
+        temperature_scaled = self.mapRange(value=int(temperature),inMin=0, inMax=1000, outMin=-40, outMax=50)
+        return temperature_scaled
+
+    def mapRange(self,value, inMin, inMax, outMin, outMax):
+        """
+              Function to interpret the steam-jack float values
+
+        """
+        return outMin + (((value - inMin) / (inMax - inMin)) * (outMax - outMin))
