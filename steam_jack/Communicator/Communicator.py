@@ -23,7 +23,7 @@ class Communicator():
          :param int COM_BAUD: Baud rate of the target device
          :param object Logger: Logger object for uniform logging
     """
-    def __init__(self,UDP_IP='192.168.0.110',UDP_PORT=6789,COM_PORT=4,COM_BAUD=SJ_DefaultBaud,DEBUG=True,LOGGER=None):
+    def __init__(self,UDP_IP='192.168.0.110',UDP_PORT=6789,UDP_IP_RESPONSE='192.168.0.150',COM_PORT=4,COM_BAUD=SJ_DefaultBaud,DEBUG=True,LOGGER=None):
 
         #verbose and logging
         self.DEBUG = DEBUG
@@ -32,6 +32,7 @@ class Communicator():
         #UDP interface
         self.UDP_IP = UDP_IP
         self.UDP_PORT = UDP_PORT
+        self.UDP_IP_RESPONSE = UDP_IP_RESPONSE
         self.udp_socket_out = None
         self.udp_socket_in = None
 
@@ -60,7 +61,7 @@ class Communicator():
         self.udp_socket_out = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)  # UDP
         # activate an ingoing UDP
         self.udp_socket_in = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)  # UDP
-        self.udp_socket_in.bind((socket.gethostname(), SJ_DefaultPortIn))
+        self.udp_socket_in.bind((self.UDP_IP_RESPONSE, SJ_DefaultPortIn))
 
     def deactivateUDP(self):
         """

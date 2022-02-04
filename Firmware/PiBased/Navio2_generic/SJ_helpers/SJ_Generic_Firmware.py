@@ -84,7 +84,6 @@ class SJ_Controller():
     def sendResponse(self,id,cmd,parameter):
         message = self.localCommunicator.composeMessage(id,cmd,parameter)
         udp_socket_out = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        print(self.UDP_IP_RESPONSE)
         udp_socket_out.sendto(message, (self.UDP_IP_RESPONSE, self.UDP_PORT_RESPONSE))
 
     def nullFunction(self):
