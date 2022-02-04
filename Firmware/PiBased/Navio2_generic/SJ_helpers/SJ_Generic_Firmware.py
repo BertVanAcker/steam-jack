@@ -16,7 +16,7 @@ elif sys.platform.startswith('linux') or sys.platform.startswith('cygwin') or sy
     sys.path.append('../../')
     from SJ_helpers import SJ_Constants
     from SJ_helpers import SJ_HelperFunctions
-    from DeviceSpecific.DeviceSpecific import DeviceSpecificFunctions
+    from ..DeviceSpecific.DeviceSpecific import DeviceSpecificFunctions
 
 
 
