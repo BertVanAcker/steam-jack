@@ -15,9 +15,9 @@ controller = SJ_Controller(DEBUG=DEBUG)
 
 #------------function mapping----------------------------
 deviceHandler = DeviceSpecificFunctions(DEBUG)
-controller.executeCommand = deviceHandler.executeCommand
-controller.update = deviceHandler.update
-controller.connect = deviceHandler.connect
+controller.SJ_ActionLED_function = deviceHandler.ActionLED_function
+controller.SJ_BlinkLED_function = deviceHandler.BlinkLED_function
+controller.SJ_BlinkLEDSTOP_function = deviceHandler.BlinkLEDSTOP_function
 #--------------------------------------------------------
 
 #start the controller

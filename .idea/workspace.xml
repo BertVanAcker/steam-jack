@@ -32,16 +32,16 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Firmware/00_PiBased/Generic/SJ_helpers" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/examples/Emulators/Emlid_Navio" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/examples/Emulators/Emlid_Navio" />
       <recent name="$PROJECT_DIR$/Firmware/00_PiBased/Generic/SJ_helpers" />
       <recent name="$PROJECT_DIR$/Firmware/00_PiBased/Generic" />
       <recent name="C:\Users\B.MKR\Documents\03_Repositories\steam-jack\Firmware\00_PiBased\Navio2\SJ_helpers" />
       <recent name="C:\Users\B.MKR\Documents\03_Repositories\steam-jack\Firmware\00_PiBased\Navio2" />
-      <recent name="C:\Users\B.MKR\Documents\03_Repositories\steam-jack\examples\Development_boards\Emlid_Navio" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Firmware/00_PiBased/Generic/DeviceSpecific" />
@@ -49,7 +49,28 @@
       <recent name="C:\Users\B.MKR\Documents\03_Repositories\steam-jack\dist_previous" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Firmware_v1">
+  <component name="RunManager" selected="Python.Blinking_LED (1)">
+    <configuration name="Blinking_LED (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="steam-jack" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/examples/Emulators/Emlid_Navio" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/examples/Emulators/Emlid_Navio/Blinking_LED.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Blinking_LED" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="steam-jack" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -84,27 +105,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/examples/Development_boards/Emlid_Navio/Buildin_LED.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Buildin_LED" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="steam-jack" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/examples/Emlid_Navio" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/examples/Emlid_Navio/Buildin_LED.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -157,11 +157,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Blinking_LED" />
+        <item itemvalue="Python.Blinking_LED (1)" />
         <item itemvalue="Python.Firmware_v1" />
+        <item itemvalue="Python.Blinking_LED" />
         <item itemvalue="Python.Buildin_LED (1)" />
         <item itemvalue="Python.Emulator_v1" />
-        <item itemvalue="Python.Buildin_LED" />
       </list>
     </recent_temporary>
   </component>
@@ -190,5 +190,16 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Firmware/PiBased/Generic/Firmware_v1.py</url>
+          <line>16</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

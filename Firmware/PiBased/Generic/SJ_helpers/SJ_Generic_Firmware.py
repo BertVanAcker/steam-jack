@@ -20,14 +20,19 @@ elif sys.platform.startswith('linux') or sys.platform.startswith('cygwin') or sy
 
 
 
+
 class SJ_Controller():
 
-    def __init__(self,DEBUG=False):
+    def __init__(self,UDP_IP='',UDP_PORT=6789,DEBUG=False):
         self.DEBUG = DEBUG
-        self.GLOBAL_SOCKET = None
-        #instantiate the steam-jack helpers
-        self.deviceHandler = DeviceSpecificFunctions(DEBUG)
 
+        #UDP config
+        self.GLOBAL_SOCKET = None
+        self.UDP_IP = UDP_IP
+        self.UDP_PORT = UDP_PORT
+
+        #instantiate the steam-jack helpers
+        self.localCommunicator = SJ_HelperFunctions.DeviceCommunicator(DEBUG)
         atexit.register(self.exit_handler)
 
 
@@ -41,16 +46,43 @@ class SJ_Controller():
         print('Exit function called!')
         self.GLOBAL_SOCKET.close()
 
-    def update(self):
-        self.nullFunction()
 
     def connect(self):
-        self.nullFunction()
+        # ----------------setting up connection and both ports----------------
+        self.GLOBAL_SOCKET = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)  # UDP
+        self.GLOBAL_SOCKET.bind((self.UDP_IP, self.UDP_PORT))
+        # --------------------------------------------------------------------
+        print('Firmware communication initialized')
 
-    def executeCommand(self):
-        self.nullFunction()
 
+    def update(self):
+        try:
+            data, addr = self.GLOBAL_SOCKET.recvfrom(1024)
+            # Parse packet
+            id, cmd, value = self.localCommunicator.genericRead(data)
+            # execute command
+            self.executeCommand(cmd, value)
+        except:
+            print("ERROR")
+
+    def executeCommand(self, cmd, parameter):
+
+        if cmd == SJ_Constants.SJ_ActionLED:
+            self.SJ_ActionLED_function(parameter)
+        if cmd == SJ_Constants.SJ_BlinkLED:
+            self.SJ_BlinkLED_function(parameter)
+        if cmd == SJ_Constants.SJ_BlinkLEDSTOP:
+            self.SJ_BlinkLEDSTOP_function(parameter)
 
     def nullFunction(self):
         if self.DEBUG:print("Function not implemented on this device")
+
+    def SJ_ActionLED_function(self):
+        self.nullFunction()
+
+    def SJ_BlinkLED_function(self):
+        self.nullFunction()
+
+    def SJ_BlinkLEDSTOP_function(self):
+        self.nullFunction()
 
