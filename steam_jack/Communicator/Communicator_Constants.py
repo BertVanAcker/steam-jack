@@ -35,4 +35,10 @@ NAVIO_LED_Cyan = '5'
 NAVIO_LED_Magenta = '6'
 NAVIO_LED_White = '7'
 
+# Micro:bit constants
+MBT_DISP_OUT = '0'
+MBT_DISP_HEART = '1'
+MBT_DISP_CROSS = '2'
+
+
 

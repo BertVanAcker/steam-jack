@@ -18,12 +18,12 @@ class Communicator():
 
          :param bool DEBUG: setting the verbose
          :param string UDP_IP: IP address of the target device
-         :param int UDP_PORT: UDP port of the target device
-         :param int COM_PORT: COM port of the target device
+         :param string UDP_PORT: UDP port of the target device
+         :param string COM_PORT: COM port of the target device
          :param int COM_BAUD: Baud rate of the target device
          :param object Logger: Logger object for uniform logging
     """
-    def __init__(self,UDP_IP='192.168.0.110',UDP_PORT=6789,UDP_IP_RESPONSE='192.168.0.150',COM_PORT=4,COM_BAUD=SJ_DefaultBaud,DEBUG=True,LOGGER=None):
+    def __init__(self,UDP_IP='192.168.0.110',UDP_PORT=6789,UDP_IP_RESPONSE='192.168.0.150',COM_PORT='COM5',COM_BAUD=SJ_DefaultBaud,DEBUG=True,LOGGER=None):
 
         #verbose and logging
         self.DEBUG = DEBUG
@@ -50,7 +50,10 @@ class Communicator():
         """
         self.activeCOMM = "Serial"
         self.Serial_socket = serial.Serial(self.COM_PORT, self.COM_BAUD)
-        self.Serial_socket.timeout = SJ_Timeout / 1000  #in sec
+        #close and re-open
+        self.Serial_socket.close()
+        self.Serial_socket.open()
+
 
     def activateUDP(self):
         """
@@ -67,10 +70,17 @@ class Communicator():
         """
               Function to deactivate the UDP communication method
         """
-        #activate an outgoing UDP
+        #de-activate an outgoing UDP
         self.udp_socket_out.close()
         # activate an ingoing UDP
         self.udp_socket_in.close()
+
+    def deactivateSerial(self):
+        """
+              Function to deactivate the SERIAL communication method
+        """
+        #de-activate the serial connetion
+        self.Serial_socket.close()
 
     def genericWrite(self,id,cmd,parameter=None):
         """
@@ -94,12 +104,9 @@ class Communicator():
                 self.LOGGER.log(msg="UPD failed: " + str(MESSAGE), type="ERROR")
 
         elif self.activeCOMM == "Serial":
-            try:
-                self.Serial_socket.write(MESSAGE)
-                self.LOGGER.log(msg="Serial send:" + MESSAGE, type="INFO")
-            except:
-                if self.DEBUG:print("Serial communication failed.")
-                self.LOGGER.log(msg="Serial failed: " + str(MESSAGE), type="ERROR")
+
+            self.Serial_socket.write(MESSAGE)
+            self.LOGGER.log(msg="Serial send:" + str(MESSAGE), type="INFO")
 
     def genericWrite_blocking(self,id,cmd,parameter=None):
         """
@@ -135,18 +142,16 @@ class Communicator():
                     if self.DEBUG:print("ERROR")
 
         elif self.activeCOMM == "Serial":
-            try:
-                self.Serial_socket.write(MESSAGE)
-                self.LOGGER.log(msg="Serial send:" + MESSAGE, type="INFO")
-            except:
-                if self.DEBUG:print("Serial communication failed.")
-                self.LOGGER.log(msg="Serial failed: " + str(MESSAGE), type="ERROR")
+
+            self.Serial_socket.write(MESSAGE)
+            self.LOGGER.log(msg="Serial send:" + str(MESSAGE), type="INFO")
 
             # wait for a response on serial port
             RESPONSE = 0
             while not RESPONSE:
                 try:
                     data = self.Serial_socket.readline()
+                    print(data)
                     # Parse packet
                     id, cmd, value = self.interpretMessage(data)
                     RESPONSE = 1
