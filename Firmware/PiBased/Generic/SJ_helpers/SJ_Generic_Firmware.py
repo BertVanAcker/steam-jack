@@ -78,18 +78,33 @@ class SJ_Controller():
         if cmd == SJ_Constants.SJ_BlinkLEDSTOP:
             self.SJ_BlinkLEDSTOP_function(parameter)
         if cmd == SJ_Constants.SJ_FetchTemperature:
-            print(self.SJ_FetchTemperature_function(parameter))
             temp = self.SJ_FetchTemperature_function(parameter)
-            self.sendResponse(1,SJ_Constants.SJ_Temperature,int(temp))
+            self.sendResponse(1, SJ_Constants.SJ_Temperature, int(temp))
 
     def sendResponse(self,id,cmd,parameter):
-        message = self.localCommunicator.composeMessage(id,cmd,parameter)
-        if self.DEBUG: print("message composed: "+message)
+        message = self.localCommunicator.composeMessage(id, cmd, parameter)
         udp_socket_out = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         udp_socket_out.sendto(message, (self.UDP_IP_RESPONSE, self.UDP_PORT_RESPONSE))
 
     def nullFunction(self):
         if self.DEBUG:print("Function not implemented on this device")
+
+    def attach(self,cmd,function):
+        """
+            Function to assign device specific functions
+
+             :param string cmd: command identifier - see steam-jack constants
+             :param function f: function pointer of the device specific function
+        """
+        if cmd == SJ_Constants.SJ_ActionLED:
+            self.SJ_ActionLED_function=function
+        if cmd == SJ_Constants.SJ_BlinkLED:
+            self.SJ_BlinkLED_function=function
+        if cmd == SJ_Constants.SJ_BlinkLEDSTOP:
+            self.SJ_BlinkLEDSTOP_function=function
+        if cmd == SJ_Constants.SJ_FetchTemperature:
+            self.SJ_FetchTemperature_function=function
+
 
     def SJ_ActionLED_function(self):
         self.nullFunction()
