@@ -21,9 +21,9 @@ class Emlid_navio():
          :param string UDP_IP: IP address of the target device
          :param int UDP_PORT: UDP port of the target device
     """
-    def __init__(self,UDP_IP='192.168.0.110',UDP_PORT=6789,DEBUG=False):
+    def __init__(self,UDP_IP='192.168.0.110',UDP_PORT=6789,UDP_IP_RESPONSE='192.168.0.150',DEBUG=False):
         self.logger = Logger.Logger(fileName="logs/Emlid-navio.log")
-        self.communicator = Communicator.Communicator(UDP_IP=UDP_IP, UDP_PORT=UDP_PORT, LOGGER=self.logger,DEBUG=DEBUG)
+        self.communicator = Communicator.Communicator(UDP_IP=UDP_IP, UDP_PORT=UDP_PORT,UDP_IP_RESPONSE=UDP_IP_RESPONSE,LOGGER=self.logger,DEBUG=DEBUG)
 
         #activating the UDP communication method
         self.communicator.activateUDP()

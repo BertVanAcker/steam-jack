@@ -5,7 +5,7 @@ from steam_jack.Communicator.Communicator_Constants import *
 
 #instantiate the device
 #device = Emlid_navio.Emlid_navio(UDP_IP='192.168.0.150',UDP_PORT=6789,DEBUG=False)  #emulator Windows
-device = Emlid_navio.Emlid_navio(UDP_IP='127.0.0.1',UDP_PORT=6789,DEBUG=False)  #emulator mac
+device = Emlid_navio.Emlid_navio(UDP_IP='127.0.0.1',UDP_PORT=6789,UDP_IP_RESPONSE='127.0.0.1',DEBUG=False)  #emulator mac
 
 #change the color of the build-in LED
 device.buildinLED(NAVIO_LED_Green)

@@ -7,6 +7,7 @@ elif sys.platform.startswith('linux') or sys.platform.startswith('cygwin') or sy
     print('Linux environment - imports adapted')
     sys.path.append('../')
     from SJ_helpers.SJ_Generic_Firmware import SJ_Controller
+    from SJ_helpers.SJ_Generic_Firmware import SJ_Constants
     from DeviceSpecific.DeviceSpecific import DeviceSpecificFunctions
 
 
@@ -15,11 +16,13 @@ controller = SJ_Controller(DEBUG=DEBUG)
 
 #------------function mapping----------------------------
 deviceHandler = DeviceSpecificFunctions(DEBUG)
-controller.SJ_ActionLED_function = deviceHandler.ActionLED_function
-controller.SJ_BlinkLED_function = deviceHandler.BlinkLED_function
-controller.SJ_BlinkLEDSTOP_function = deviceHandler.BlinkLEDSTOP_function
-controller.SJ_FetchTemperature_function = deviceHandler.FetchTemperature_function
+controller.attach(cmd=SJ_Constants.SJ_ActionLED,function=deviceHandler.ActionLED_function)
+controller.attach(cmd=SJ_Constants.SJ_BlinkLED,function=deviceHandler.BlinkLED_function)
+controller.attach(cmd=SJ_Constants.SJ_BlinkLEDSTOP,function=deviceHandler.BlinkLEDSTOP_function)
+controller.attach(cmd=SJ_Constants.SJ_FetchTemperature,function=deviceHandler.FetchTemperature_function)
 #--------------------------------------------------------
+
+
 
 #start the controller
 controller.start()
