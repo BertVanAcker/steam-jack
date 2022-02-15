@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="17dbf23a-a872-4962-90f7-2944e55d987e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/steam_jack/Communicator/Communicator.py" beforeDir="false" afterPath="$PROJECT_DIR$/steam_jack/Communicator/Communicator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/steam_jack/Communicator/Communicator_Constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/steam_jack/Communicator/Communicator_Constants.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
