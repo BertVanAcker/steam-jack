@@ -38,12 +38,16 @@ class Documentor():
 
         content = []
         for cell in NotebookObject.Content:
-            title = '#'+cell.Title   #heading 1 title
+            title = '# '+cell.Title+'\n'  #heading 1 title
             text = cell.Text
             if cell.Type=='markdown':
-                content.append(nbf.v4.new_markdown_cell(title+'<br>'+text))
+                section = title+","+"\n"+','+text
+                content.append(nbf.v4.new_markdown_cell(section))
             if cell.Type == 'code':
-                content.append(nbf.v4.new_code_cell(title+'<br>'+text))
+                section = title+","+"\n"+'Description placeholder'
+                codeSection = cell.Text
+                content.append(nbf.v4.new_markdown_cell(section))
+                content.append(nbf.v4.new_code_cell(codeSection))
 
         #add all cells to the notebook
         self.notebook['cells'] = content
