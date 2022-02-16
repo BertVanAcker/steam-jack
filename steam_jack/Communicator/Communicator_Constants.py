@@ -11,7 +11,7 @@ SJ_UDP_IP_IN = '192.168.0.150'
 SJ_DefaultBaud = 115200
 SJ_DefaultPortIn = 5000
 
-# general
+# General
 SJ_Timeout = 100        #in ms
 SJ_CommandStart = "#"
 SJ_CommandEnd = "\r"
