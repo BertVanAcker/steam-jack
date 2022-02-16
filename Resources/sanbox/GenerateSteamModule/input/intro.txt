@@ -1,0 +1,3 @@
+<img src="assets/smartfarming.jpg" alt="smartfarming" width="500" height="300">
+Dit is een korte introductie voor een STEAM module.\n
+Deze bevat telkens een algemene tekst met een teaser figuur.\n
