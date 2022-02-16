@@ -1,6 +1,7 @@
 from threading import Thread,Lock,Timer
 import socket
 import sys
+
 #device-specific imports
 if sys.platform.startswith('win'):
     print('Windows environment - imports adapted')
