@@ -12,7 +12,7 @@ code = "print('Hello World!')\n" \
        "print('second line of code')"
 
 textWithImage = "this is a very long code description if I had the energy to type more and more ...\n\n" \
-                '<div> <img src="assets/mtiny.png" alt="mTiny" style="width: 100px;"/></div> '
+                '<img src="assets/mtiny.png" alt="mTiny" width="100" height="100">'
 
 cell1=DocumentorObjects.Cell(Title='Markdown test',Text=text,Type='markdown',Format='intro')
 cell2=DocumentorObjects.Cell(Title='Code test',Text=textWithImage,Code=code,Type='code',Format='subsection')
