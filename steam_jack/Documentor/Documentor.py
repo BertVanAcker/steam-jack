@@ -41,9 +41,9 @@ class Documentor():
             title = '#'+cell.Title   #heading 1 title
             text = cell.Text
             if cell.Type=='markdown':
-                content.append(nbf.v4.new_markdown_cell(title+text))
+                content.append(nbf.v4.new_markdown_cell(title+'<br>'+text))
             if cell.Type == 'code':
-                content.append(nbf.v4.new_code_cell(title + text))
+                content.append(nbf.v4.new_code_cell(title+'<br>'+text))
 
         #add all cells to the notebook
         self.notebook['cells'] = content
