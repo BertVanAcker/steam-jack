@@ -41,11 +41,11 @@ class Documentor():
             title = '# '+cell.Title+'\n'  #heading 1 title
             text = cell.Text
             if cell.Type=='markdown':
-                section = title+","+"\n"+','+text
+                section = title+text
                 content.append(nbf.v4.new_markdown_cell(section))
             if cell.Type == 'code':
-                section = title+","+"\n"+'Description placeholder'
-                codeSection = cell.Text
+                section = title+cell.Text
+                codeSection = cell.Code
                 content.append(nbf.v4.new_markdown_cell(section))
                 content.append(nbf.v4.new_code_cell(codeSection))
 

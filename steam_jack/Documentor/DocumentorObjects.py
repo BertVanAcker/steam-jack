@@ -45,14 +45,16 @@ class Cell():  #
 
          :param string Title: Title for the notebook cell
          :param string Text: Text for the notebook cell
+         param string Code: Code for the notebook cell
          :param string CellType: CellType of the notebook cell (markdown|code|raw)
     """
 
-    def __init__(self, JSONDescriptor=None, Title="", Text="", Type='markdown', DEBUG=True):
+    def __init__(self, JSONDescriptor=None, Title="", Text="", Code="", Type='markdown', DEBUG=True):
         self.DEBUG = DEBUG
         if JSONDescriptor is None:
             self.Title = Title
             self.Text = Text
+            self.Code = Code
             self.Type = Type
 
         else:
