@@ -38,7 +38,12 @@ class Documentor():
 
         content = []
         for cell in NotebookObject.Content:
-            title = '# '+cell.Title+'\n'  #heading 1 title
+            if cell.Format=='intro':
+                title = '# '+cell.Title+'\n'  #heading 1 title
+            elif cell.Format=='subsection':
+                title = '## ' + cell.Title + '\n'  # heading 2 title
+            elif cell.Format=='subsubsection':
+                title = '### ' + cell.Title + '\n'  # heading 3 title
             text = cell.Text
             if cell.Type=='markdown':
                 section = title+text

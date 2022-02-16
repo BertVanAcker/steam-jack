@@ -45,17 +45,19 @@ class Cell():  #
 
          :param string Title: Title for the notebook cell
          :param string Text: Text for the notebook cell
-         param string Code: Code for the notebook cell
+         :param string Code: Code for the notebook cell
+         :param enum Format: Formatting info for the title (intro|section|subsection
          :param string CellType: CellType of the notebook cell (markdown|code|raw)
     """
 
-    def __init__(self, JSONDescriptor=None, Title="", Text="", Code="", Type='markdown', DEBUG=True):
+    def __init__(self, JSONDescriptor=None, Title="", Text="", Code="", Type='markdown',Format='intro', DEBUG=True):
         self.DEBUG = DEBUG
         if JSONDescriptor is None:
             self.Title = Title
             self.Text = Text
             self.Code = Code
             self.Type = Type
+            self.Format = Format
 
         else:
             self.json2object(JSONDescriptor)
