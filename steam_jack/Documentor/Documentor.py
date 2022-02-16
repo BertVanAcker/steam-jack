@@ -63,6 +63,55 @@ class Documentor():
             nbf.write(self.notebook, f)
 
 
+    def generateSTEAM_notebook(self,SteamObject,output):
+        """
+            Function to generate a jupyter notebook STEAM lession
+
+             :param object SteamObject: SteamObject class
+             :param string output: Path to the output location
+        """
+
+        self.notebook = nbf.v4.new_notebook()
+        content = []
+
+        #----------add the intro------------
+        title = '# ' + SteamObject.Introduction.Title + '\n'  # heading 1 title
+        text = SteamObject.Introduction.Text
+        content.append(nbf.v4.new_markdown_cell(title + text))
+        # ----------add the supported devices------------
+        title = '## ' + SteamObject.SupportedDevices.Title + '\n'  # heading 2 title
+        text = SteamObject.SupportedDevices.Text
+        content.append(nbf.v4.new_markdown_cell(title + text))
+        # ----------add the related modules------------
+        title = '## ' + SteamObject.RelatedModules.Title + '\n'  # heading 2 title
+        text = SteamObject.RelatedModules.Text
+        content.append(nbf.v4.new_markdown_cell(title + text))
+        # ----------add other content as formatted------------
+        for cell in SteamObject.Content:
+            if cell.Format=='intro':
+                title = '# '+cell.Title+'\n'  #heading 1 title
+            elif cell.Format=='subsection':
+                title = '## ' + cell.Title + '\n'  # heading 2 title
+            elif cell.Format=='subsubsection':
+                title = '### ' + cell.Title + '\n'  # heading 3 title
+            text = cell.Text
+            if cell.Type=='markdown':
+                section = title+text
+                content.append(nbf.v4.new_markdown_cell(section))
+            if cell.Type == 'code':
+                section = title+cell.Text
+                codeSection = cell.Code
+                content.append(nbf.v4.new_markdown_cell(section))
+                content.append(nbf.v4.new_code_cell(codeSection))
+
+        #add all cells to the notebook
+        self.notebook['cells'] = content
+
+        #Generate the jupyter notebook and store in output
+        fname = output+SteamObject.Name+'.ipynb'
+        with open(fname, 'w') as f:
+            nbf.write(self.notebook, f)
+
     def generateFirmwareTemplate_python(self,FirmwareObject,output):
 
         # Create the output folder

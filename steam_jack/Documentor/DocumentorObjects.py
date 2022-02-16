@@ -182,3 +182,49 @@ class FunctionParameter():  #
             self.Default = default
             self.Datatype = datatype
             self.EnumDefinition = enumDefinition
+
+
+class SteamModule():
+    """
+        Notebook: Class representing the jupyter notebook template
+
+         :param string Name: Name of the STEAM module
+         :param string Domain: Domain of the STEAM module
+         :param object Introduction: Introduction notebook cell
+         :param object Supported devices: Supported devices notebook cell
+         :param object RelatedModules: Related notebook cell
+         :param objectList Content:  multiple notebook celln with the actual STEAM content
+    """
+
+    def __init__(self, JSONDescriptor=None, Name="", Domain="",Introduction=None,SupportedDevices=None,RelatedModules=None,content = [], DEBUG=True):
+        self.DEBUG = DEBUG
+        if JSONDescriptor is None:
+            self.Name = Name
+            self.Domain = Domain
+            self.Introduction = Introduction
+            self.SupportedDevices = SupportedDevices
+            self.RelatedModules = RelatedModules
+            self.Content = content
+
+        else:
+            self.json2object(JSONDescriptor)
+            x = 10
+
+    def json2object(self, jsonDescriptor):
+        """
+             Function to generate a Notebook object from a JSON file
+
+             :param string jsonDescriptor: absolute path to the json file for the DomainVariable
+
+        """
+
+        # --interpret JSON file--
+        with open(jsonDescriptor, "r") as read_file:
+            jsonObject = json.load(read_file)
+
+
+    def object2json(self):
+        """
+               Function to generate a json file from the notebook model
+        """
+        return json.dumps(self, default=lambda o: o.__dict__, indent=4)
