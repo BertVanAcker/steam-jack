@@ -8,13 +8,13 @@ codeExplenation = """ this is a very
                         long code description if I had the
                         energy to type more and more ..."""
 
-code = """ print('Hello World!')\n
-           print('second line of code')"""
+code = " print('Hello World!')\n" \
+       "print('second line of code')"
 
 textWithImage = """ this is a very
                         long code description if I had the
                         energy to type more and more ...\n
-                ![Example image](../assets/mtiny.png)
+                ![Example image](assets/mtiny.png)
                         """
 
 cell1=DocumentorObjects.Cell(Title='Markdown test',Text=text,Type='markdown',Format='intro')
