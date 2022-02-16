@@ -2,13 +2,9 @@ from steam_jack.Documentor import Documentor,DocumentorObjects
 
 documentor = Documentor.Documentor(DEBUG=True,LOGGER=None)
 
-text = """\
-       # My first automatic Jupyter Notebook
-       This is an auto-generated notebook."""
+text = "Introduction text, this can be formatted using the markdown language."
 
-code = """\
-        %pylab inline
-        hist(normal(size=2000), bins=50);"""
+code = "print('Hello World!')"
 
 cell1=DocumentorObjects.Cell(Title='Markdown test',Text=text,Type='markdown')
 cell2=DocumentorObjects.Cell(Title='Code test',Text=code,Type='code')
