@@ -228,3 +228,84 @@ class SteamModule():
                Function to generate a json file from the notebook model
         """
         return json.dumps(self, default=lambda o: o.__dict__, indent=4)
+
+
+class GenericDocument():
+    """
+        GenericDocument: Class representing a generic document
+
+         :param string Name: Name of the DomainVariable
+
+         :param objectList content: ObjectList with the content for Generic Document (IN ORDER!)
+    """
+
+    def __init__(self, JSONDescriptor=None, Name="",content = [], DEBUG=True):
+        self.DEBUG = DEBUG
+        if JSONDescriptor is None:
+            self.Name = Name
+            self.Content = content
+
+        else:
+            self.json2object(JSONDescriptor)
+            x = 10
+
+    def json2object(self, jsonDescriptor):
+        """
+             Function to generate a Notebook object from a JSON file
+
+             :param string jsonDescriptor: absolute path to the json file for the DomainVariable
+
+        """
+
+        # --interpret JSON file--
+        with open(jsonDescriptor, "r") as read_file:
+            jsonObject = json.load(read_file)
+
+
+    def object2json(self):
+        """
+               Function to generate a json file from the notebook model
+        """
+        return json.dumps(self, default=lambda o: o.__dict__, indent=4)
+
+
+class Header():
+    """
+        Header: Class representing a generic document header
+
+         :param string Text: Header text
+         :param int Level: Header level
+    """
+
+    def __init__(self, JSONDescriptor=None, Text="", Level=1, DEBUG=True):
+        self.DEBUG = DEBUG
+        if JSONDescriptor is None:
+            self.Text = Text
+            self.Level = Level
+
+class Paragraph():
+    """
+        Paragraph: Class representing a generic document paragraph
+
+         :param string Text: Header text
+         :param int Level: Header level
+    """
+
+    def __init__(self, JSONDescriptor=None, Text="", DEBUG=True):
+        self.DEBUG = DEBUG
+        if JSONDescriptor is None:
+            self.Text = Text
+
+class Image():
+    """
+        Image: Class representing a generic document Image
+
+         :param string Text: Header text
+         :param int Level: Header level
+    """
+
+    def __init__(self, JSONDescriptor=None, AltText="",src = "", DEBUG=True):
+        self.DEBUG = DEBUG
+        if JSONDescriptor is None:
+            self.AltText = AltText
+            self.Source = src

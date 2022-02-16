@@ -1,8 +1,9 @@
 # Heading 1
-This is just a text
+blabla
+blabla2
 ## Heading 2
 jhdjhjdfhdfjhdjfhdfd
 fdhfjdhfjdf
 dhfjdfhjdf
 
-<img src="https://github.com/BertVanAcker/steam-jack/tree/main/Resources/Assets/General/mtiny.png" width="200">
+<img src="https://github.com/BertVanAcker/steam-jack/blob/main/Resources/Assets/General/bulb.gif?raw=True" width="220" height="240" />
