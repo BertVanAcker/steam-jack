@@ -197,7 +197,12 @@ class Documentor():
                     content.append(python_markdown_maker.code_block(docElement.Code, lang=docElement.Formalism))
                     content.append('\n')
 
-        document.write(content)
+        #clean content
+        content_cleaned = []
+        for val in content:
+            if val != None:
+                content_cleaned.append(val)
+        document.write(content_cleaned)
 
         with open(output, 'w') as file:
             document.render.save_as_md(file)
