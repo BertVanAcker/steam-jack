@@ -28,11 +28,11 @@ class Documentor():
 
     def generateNotebook(self,NotebookObject,output):
         """
-                Function to generate a jupyter notebook
+            Function to generate a jupyter notebook
 
-                 :param object NotebookObject: Jupyter notebook class
-                 :param string output: Path to the output location
-            """
+             :param object NotebookObject: Jupyter notebook class
+             :param string output: Path to the output location
+        """
 
         self.notebook = nbf.v4.new_notebook()
 

@@ -1,4 +1,7 @@
 import json
+from PIL import Image
+import requests
+import io
 
 class Notebook():
     """
@@ -300,12 +303,70 @@ class Image():
     """
         Image: Class representing a generic document Image
 
-         :param string Text: Header text
-         :param int Level: Header level
+         :param string AltText: Lternative text
+         :param string src: Header level
+         :param int Width: image width
+         :param int Height: image Height
+
     """
 
-    def __init__(self, JSONDescriptor=None, AltText="",src = "", DEBUG=True):
+    def __init__(self, JSONDescriptor=None, AltText="",ImagePath = "",Width="500",Height="500", DEBUG=True):
         self.DEBUG = DEBUG
         if JSONDescriptor is None:
             self.AltText = AltText
-            self.Source = src
+            self.ImagePath = ImagePath
+            self.Width = Width
+            self.Height = Height
+            try:
+                if 'https:' in self.ImagePath:      #remote image!
+                    path = self.ImagePath.split('?')[0]
+                    self.ImageObject = self.download_image(url=path)
+                else:
+                    self.ImageObject = Image.open(self.ImagePath)
+
+            except:
+                if DEBUG:print("Image object not loaded!")
+                self.ImageObject = None
+
+    def download_image(self,url):
+        """
+            Function to download an image from an URL link
+
+             :param string url: url link to the image
+             :return object im: Image object to be used
+        """
+        r = requests.get(url, timeout=4.0)
+        if r.status_code != requests.codes.ok:
+            assert False, 'Status code error: {}.'.format(r.status_code)
+
+        with Image.open(io.BytesIO(r.content)) as im:
+            return im
+            #im.save(image_file_path)
+
+class CodeSection():
+    """
+        CodeSection: Class representing a generic document code section
+
+         :param string Code: Code
+         :param string formalism: Code formalism
+    """
+
+    def __init__(self, JSONDescriptor=None, Code="",Formalism = "python", DEBUG=True):
+        self.DEBUG = DEBUG
+        if JSONDescriptor is None:
+            self.Code = Code
+            self.Formalism = Formalism
+
+class ListSection():
+    """
+        ListSection: Class representing a generic document list section
+
+         :param list ListElements: a list of the list elements
+         :param string bullet: bullet type
+    """
+
+    def __init__(self, JSONDescriptor=None, ListElements=[],Bullet = "-", DEBUG=True):
+        self.DEBUG = DEBUG
+        if JSONDescriptor is None:
+            self.ListElements = ListElements
+            self.Bullet = Bullet

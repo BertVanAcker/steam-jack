@@ -1,4 +1,5 @@
 import marko
+from bs4 import BeautifulSoup
 from steam_jack.Documentor import DocumentorObjects
 
 from marko.renderer import Renderer
@@ -20,6 +21,16 @@ class CustomRenderer(Renderer):
             if 'Paragraph' in str(type(child)):
                 content = self.render_paragraph(child)
                 contentList.append(content)
+            if 'FencedCode' in str(type(child)):
+                content = self.render_code(child)
+                contentList.append(content)
+            if 'HTMLBlock' in str(type(child)):
+                content = self.render_image(child)
+                contentList.append(content)
+            if 'List' in str(type(child)):
+                content = self.render_list(child)
+                contentList.append(content)
+
 
         # setup a generic document
         return DocumentorObjects.GenericDocument(Name='test',content=contentList)
@@ -39,7 +50,22 @@ class CustomRenderer(Renderer):
     def render_heading(self, element):
         return DocumentorObjects.Header(Text=element.children[0].children ,Level=element.level) #only supporting single-line headers
 
+    def render_image(self,element):
+        parsed_html = BeautifulSoup(element.children)
+        source = parsed_html.img['src']
+        width = parsed_html.img['width']
+        height = parsed_html.img['height']
+        return DocumentorObjects.Image(AltText="alt",ImagePath=source,Width=width,Height=height)
 
+    def render_code(self,element):
+        return DocumentorObjects.CodeSection(Formalism=element.lang,Code=element.children[0].children)
+
+    def render_list(self,element):
+        bullet = element.bullet
+        listElements = []
+        for child in element.children:
+            listElements.append(child.children[0].children[0].children)
+        return DocumentorObjects.ListSection(Bullet=bullet,ListElements=listElements)
 
 
 

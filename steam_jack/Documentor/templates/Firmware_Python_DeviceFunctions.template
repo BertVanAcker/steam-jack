@@ -20,21 +20,21 @@ class DeviceSpecificFunctions():
     #
     #-------------------------------------------------------------------------------------
     {% for function in object.FunctionPrototypes %}
-        def {{function.partName}}({% for parameter in function.ParameterList %}{% if loop.last %}{{parameter.Name}}{% else %}{{parameter.Name}},{% endif %}{% endfor %}):
-            """
-                 {{function.Description}}
-                 {% for parameter in function.ParameterList %}
-                 :param {{parameter.Datatype}} {{parameter.Name}}: {{parameter.Description}} #ENUM OPTIONS:{{parameter.EnumDefinition}}
-                 {% endfor %}
+    def {{function.partName}}(self,{% for parameter in function.ParameterList %}{% if loop.last %}{{parameter.Name}}{% else %}{{parameter.Name}},{% endif %}{% endfor %}):
+        """
+             {{function.Description}}
+             {% for parameter in function.ParameterList %}
+             :param {{parameter.Datatype}} {{parameter.Name}}: {{parameter.Description}} #ENUM OPTIONS:{{parameter.EnumDefinition}}
+             {% endfor %}
 
-                 {% for return in function.ReturnList %}
-                 :return {{parameter.Datatype}} {{parameter.Name}}: {{parameter.description}} #ENUM OPTIONS:{{paramter.EnumDefinition}}
-                 {% endfor %}
-            """
-            #TODO: ADD FUNCTION IMPLEMENTATION
+             {% for return in function.ReturnList %}
+             :return {{parameter.Datatype}} {{parameter.Name}}: {{parameter.description}} #ENUM OPTIONS:{{paramter.EnumDefinition}}
+             {% endfor %}
+        """
+        #TODO: ADD FUNCTION IMPLEMENTATION
 
 
-            if self.DEBUG:print('Executing function {{function.partName}}')
+        if self.DEBUG:print('Executing function {{function.partName}}')
 
     {% endfor %}
 

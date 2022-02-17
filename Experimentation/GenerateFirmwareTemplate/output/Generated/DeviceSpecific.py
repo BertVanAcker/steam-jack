@@ -19,16 +19,16 @@ class DeviceSpecificFunctions():
     #      Device specifics
     #
     #-------------------------------------------------------------------------------------
-        def Beweeg(Richting,Snelheid):
-            """
-                 Functie om de robot chassis een lineaire beweging te laten uitvoeren voor 1 seconde.
-                 :param enum Richting: Richting van de lineaire beweging #ENUM OPTIONS:['vooruit', 'achteruit']
-                 :param int Snelheid: Snelheid van de lineaire beweging #ENUM OPTIONS:[]
+    def Beweeg(self,Richting,Snelheid):
+        """
+             Functie om de robot chassis een lineaire beweging te laten uitvoeren voor 1 seconde.
+             :param enum Richting: Richting van de lineaire beweging #ENUM OPTIONS:['vooruit', 'achteruit']
+             :param int Snelheid: Snelheid van de lineaire beweging #ENUM OPTIONS:[]
 
-            """
-            #TODO: ADD FUNCTION IMPLEMENTATION
+        """
+        #TODO: ADD FUNCTION IMPLEMENTATION
 
 
-            if self.DEBUG:print('Executing function Beweeg')
+        if self.DEBUG:print('Executing function Beweeg')
 
 
