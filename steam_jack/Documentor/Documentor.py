@@ -175,7 +175,13 @@ class Documentor():
                     content.append(docElement.Text)
                     content.append('\n')
                 if 'Image' in str(type(docElement)):
-                    content.append('\n<img src="'+docElement.ImagePath+'?raw=True" width="'+docElement.Width+'" height="'+docElement.Height+'" />\n')     #TODO: no width and height setting now, check if needed!
+                    # RESOLVE github asset location
+                    githubPath = "https://github.com/BertVanAcker/steam-jack/blob/main/Resources"
+                    path = docElement.ImagePath.split("Resources")
+                    remotePath = githubPath+path[1]
+
+                    #content.append('\n<img src="'+remotePath+'?raw=True" width="'+docElement.Width+'" height="'+docElement.Height+'" />\n')     #TODO: no width and height setting now, check if needed!
+                    content.append('\n<img src="' + remotePath + '?raw=True"/>\n')  # TODO: no width and height setting now, check if needed!
                     content.append('\n')
                 if 'ListSection' in str(type(docElement)):
                     if docElement.Bullet == "-":
