@@ -165,7 +165,7 @@ class UserInterface():
         content = []
         #provide the code template or block
         if self.Formalism == "blockcode":
-            UI_content = Image(ImagePath=self.BlockIcon)
+            UI_content = Image(ImagePath=self.BlockIcon,Width="50",Height="30")
         else:
             functionPrototype = ""
 

@@ -1,5 +1,5 @@
 from steam_jack.KnowledgeBase.STEAMLanguageConcepts import STEAMLanguage,LanguageConcept,LanguageElement,AbstractFunction,UserInterface,functionParameter,BlockExample
-
+from steam_jack.Documentor.Documentor import Documentor
 #in this file, the chassis kinematic language elements are defined and linked to the steam language
 
 
@@ -13,11 +13,11 @@ def Lineair_movement_language():
     # -----------------------------------------------------------------------------------------------------------------
     #                                   Define language function - ENTRY
     # -----------------------------------------------------------------------------------------------------------------
-    example1 = BlockExample(Title="Voorbeeld lineaire beweging robot chassis - beginner", Description="In dit voorbeeld wordt eerst de robot geinitialiseerd en daarna 10 keer een vooruit beweging uitgevoerd.",BlockCodeReference="C:/Users/B.MKR/Documents/03_Repositories/steam-jack/Resources/Assets/SteamLanguage/Robotics/Chassis_Kinematics/Lineair_Movement/examples/Lineair_Movement_Entry_Forward.PNG")
-    example2 = BlockExample(Title="Voorbeeld lineaire beweging robot chassis - beginner", Description="In dit voorbeeld wordt eerst de robot geinitialiseerd en daarna 10 keer een achteruit beweging uitgevoerd.",BlockCodeReference="C:/Users/B.MKR/Documents/03_Repositories/steam-jack/Resources/Assets/SteamLanguage/Robotics/Chassis_Kinematics/Lineair_Movement/examples/Lineair_Movement_Entry_Forward.PNG")
+    example1 = BlockExample(Title="Voorbeeld 1: Lineaire beweging vooruit", Description="In dit voorbeeld wordt eerst de robot geinitialiseerd en daarna 10 keer een vooruit beweging uitgevoerd.",BlockCodeReference="C:/Users/B.MKR/Documents/03_Repositories/steam-jack/Resources/Assets/SteamLanguage/Robotics/Chassis_Kinematics/Lineair_Movement/examples/Lineair_Movement_Entry_Forward.PNG")
+    example2 = BlockExample(Title="Voorbeeld 1: Lineaire beweging achteruit", Description="In dit voorbeeld wordt eerst de robot geinitialiseerd en daarna 10 keer een achteruit beweging uitgevoerd.",BlockCodeReference="C:/Users/B.MKR/Documents/03_Repositories/steam-jack/Resources/Assets/SteamLanguage/Robotics/Chassis_Kinematics/Lineair_Movement/examples/Lineair_Movement_Entry_Backward.PNG")
 
     # define the userinterface with correct paramters
-    direction = functionParameter(Name="Beweging", Description="Deze parameter definieert de richting van de lineaire beweging. De richting kan vooruit of achteruit zijn.")
+    direction = functionParameter(Name="Beweging", Description="Deze parameter definieert de richting van de lineaire beweging. De richting kan vooruit of achteruit zijn.",Datatype="Enum")
     Lineair_Movement_Entry_UI = UserInterface(isImplemented=True, Formalism="blockcode",
                                               BlockIcon="C:/Users/B.MKR/Documents/03_Repositories/steam-jack/Resources/Assets/SteamLanguage/Robotics/Chassis_Kinematics/Lineair_Movement/Lineair_Movement_Entry.PNG",
                                               ExtensionID="sj_robotica_arduino;sj_robotica_cyberpi;sj_robotica_microbit",
@@ -63,4 +63,11 @@ x=1
 #------------------------------------------------------------------
 
 docs = Lineair_Movement.documentation()
+
+#------------------------------------------------------------------
+#           GENERATE WORD DOCX
+#------------------------------------------------------------------
+documentHandler = Documentor(DEBUG=True)
+documentHandler.generateDocx(docList=docs,output='generated/LineaireBeweging.docx')
+documentHandler.generateMarkdown(docList=docs,output='generated/LineaireBeweging.md')
 x=1

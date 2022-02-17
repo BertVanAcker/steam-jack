@@ -310,7 +310,7 @@ class Image():
 
     """
 
-    def __init__(self, JSONDescriptor=None, AltText="",ImagePath = "",Width="500",Height="500", DEBUG=True):
+    def __init__(self, JSONDescriptor=None, AltText="",ImagePath = "",Width="50",Height="50", DEBUG=True):
         self.DEBUG = DEBUG
         if JSONDescriptor is None:
             self.AltText = AltText

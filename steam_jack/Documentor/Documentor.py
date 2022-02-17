@@ -11,6 +11,10 @@ import nbformat as nbf
 from os import mkdir
 from os.path import exists, dirname, join
 import jinja2
+from docx import Document
+from docx.shared import Mm
+import python_markdown_maker
+
 
 class Documentor():
     """
@@ -133,5 +137,62 @@ class Documentor():
         with open((join(srcgen_folder, 'DeviceSpecific.py')), 'w') as f:
             f.write(template.render(object=FirmwareObject))
 
+    def generateDocx(self,docList,output):
 
+        #start a new docx document
+        document = Document()
+
+        for doc in docList:
+            for docElement in doc.Content:
+                if 'Header' in str(type(docElement)):
+                    document.add_heading(docElement.Text, docElement.Level)
+                if 'Paragraph' in str(type(docElement)):
+                    document.add_paragraph(docElement.Text)
+                if 'Image' in str(type(docElement)):
+                    document.add_picture(docElement.ImagePath, width=Mm(int(docElement.Width)),height=Mm(int(docElement.Height)))
+                if 'ListSection' in str(type(docElement)):
+                    if docElement.Bullet == "-":
+                        for listItem in docElement.ListElements:
+                            document.add_paragraph(listItem, style='List Bullet')
+                    elif docElement.Bullet=="1.":
+                        document.add_paragraph(listItem, style='List Number')
+                if 'CodeSection' in str(type(docElement)):
+                    document.add_paragraph(docElement.Code)
+
+        document.save(output)
+
+    def generateMarkdown(self,docList,output):
+
+        #start a new md document
+        document = python_markdown_maker.Document()
+        content = []
+        for doc in docList:
+            for docElement in doc.Content:
+                if 'Header' in str(type(docElement)):
+                    content.append(python_markdown_maker.headers(docElement.Text, level=docElement.Level))
+                    content.append('\n')
+                if 'Paragraph' in str(type(docElement)):
+                    content.append(docElement.Text)
+                    content.append('\n')
+                if 'Image' in str(type(docElement)):
+                    content.append('\n<img src="'+docElement.ImagePath+'?raw=True" width="'+docElement.Width+'" height="'+docElement.Height+'" />\n')     #TODO: no width and height setting now, check if needed!
+                    content.append('\n')
+                if 'ListSection' in str(type(docElement)):
+                    if docElement.Bullet == "-":
+                        content.append(python_markdown_maker.lists(docElement.ListElements))
+                        content.append('\n')
+                    elif docElement.Bullet=="1.":
+                        listContent = ['order']
+                        for listItem in docElement.ListElements:
+                            content.append(listContent.append(listItem))
+                        content.append(python_markdown_maker.lists(listContent))
+                        content.append('\n')
+                if 'CodeSection' in str(type(docElement)):
+                    content.append(python_markdown_maker.code_block(docElement.Code, lang=docElement.Formalism))
+                    content.append('\n')
+
+        document.write(content)
+
+        with open(output, 'w') as file:
+            document.render.save_as_md(file)
 
