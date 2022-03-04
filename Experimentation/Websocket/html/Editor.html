@@ -1,0 +1,143 @@
+<!doctype html>
+<meta charset=utf8>
+<title>CM6 demo</title>
+<link rel="stylesheet" href="https://unpkg.com/@datavis-tech/codemirror-6-prerelease@5.0.0/codemirror.next/legacy-modes/style/codemirror.css">
+<script src="https://unpkg.com/@datavis-tech/codemirror-6-prerelease@5.0.0/dist/codemirror.js"></script>
+<style>
+.codemirror { height: 300px; overflow: auto; border: 1px solid silver}
+.codemirror-matching-bracket { background: red; }
+.codemirror-nonmatching-bracket { background: green; }
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+</style>
+
+
+
+<body>
+  <!-- Top navigation bar -->
+  <ul>
+  <div class="search-container">
+    <form action="/action_page.php">
+      <button type="submit">Verbinden</button>
+      <input type="text" placeholder="192.168.0.1" name="IP">
+    </form>
+  </div>
+  </ul>
+
+  <div id=editor></div>
+  <script>
+    let {
+      EditorState,
+      EditorView,
+      keymap,
+      history,
+      redo,
+      redoSelection,
+      undo,
+      undoSelection,
+      lineNumbers,
+      baseKeymap,
+      indentSelection,
+      legacyMode,
+      legacyModes: { javascript },
+      matchBrackets,
+      specialChars,
+      multipleSelections
+    } = CodeMirror;
+
+    let mode = legacyMode({mode: javascript({indentUnit: 2}, {})})
+
+    let isMac = /Mac/.test(navigator.platform)
+    let state = EditorState.create({doc: `"use strict";
+const {readFile} = require("fs");
+readFile("package.json", "utf8", (err, data) => {
+  console.log(data);
+});`, extensions: [
+      lineNumbers(),
+      history(),
+      specialChars(),
+      multipleSelections(),
+      mode,
+      matchBrackets(),
+      keymap({
+        "Mod-z": undo,
+        "Mod-Shift-z": redo,
+        "Mod-u": view => undoSelection(view) || true,
+        [isMac ? "Mod-Shift-u" : "Alt-u"]: redoSelection,
+        "Ctrl-y": isMac ? undefined : redo,
+        "Shift-Tab": indentSelection
+      }),
+      keymap(baseKeymap),
+    ]})
+
+    let view = new EditorView({state})
+    document.querySelector("#editor").appendChild(view.dom)
+
+
+  </script>
+  <script type = "text/javascript">
+
+
+
+     function WebSocketTest() {
+
+        if ("WebSocket" in window) {
+           alert("Websocket supported");
+
+           // Let us open a web socket
+           var ws = new WebSocket("ws://localhost:9001/echo");
+
+           ws.onopen = function() {
+
+              // Web Socket is connected, send data using send()
+              ws.send(JSON.stringify({Command:"CMD_ID",Pin:6}));
+              alert("Message is sent...");
+           };
+
+           ws.onmessage = function (evt) {
+              var received_msg = evt.data;
+              alert("Message is received...");
+           };
+
+           ws.onclose = function() {
+
+              // websocket is closed.
+              alert("Connection is closed...");
+           };
+        } else {
+
+           // The browser doesn't support WebSocket
+           alert("WebSocket NOT supported by your Browser!");
+        }
+     }
+  </script>
+
+  <!-- Bottom navigation bar -->
+  <ul>
+    <li><a class="Run" href="javascript:WebSocketTest()">Run</a></li>
+    <textarea id="editorSource" name="editorSource">Some filler text</textarea>
+    <li><a class="Text">Klik</a></li>
+    </ul>
+
+</body>

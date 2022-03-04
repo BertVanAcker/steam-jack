@@ -1,0 +1,105 @@
+<html>
+<head>
+  <title>Using CodeMirror mode</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="text/javascript" src="https://codemirror.net/lib/codemirror.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://codemirror.net/lib/codemirror.css">
+  <style id="compiled-css" type="text/css">
+
+.cm-style1 {//from   w  w  w.  j a va2s.  c om
+   color: red;
+}
+.cm-style2 {
+   color: blue;
+}
+.cm-style3 {
+   color: purple;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+.codemirror { height: 300px; overflow: auto; border: 1px solid silver}
+.codemirror-matching-bracket { background: red; }
+.codemirror-nonmatching-bracket { background: green; }
+
+</style>
+
+   </head>
+   <body>
+   		<!-- Top navigation bar -->
+	  <ul>
+	  <div class="search-container">
+		<form action="/action_page.php">
+		  <button type="submit">Verbinden</button>
+		  <input type="text" placeholder="192.168.0.1" name="IP">
+		</form>
+	  </div>
+	  </ul>
+		<!-- Actual editor -->
+      <textarea rows="4" cols="30" id="cm" name="cm">import time</textarea>
+   	 <!-- Bottom navigation bar -->
+	  <ul>
+		<li><a class="Run" href="javascript:SendCode()">Run</a></li>
+		</ul>
+
+
+      <script type="text/javascript">
+			var keywords = ["timer", "counter", "version"];
+			CodeMirror.defineMode("python", function() {
+			  return {
+				token: function(stream, state) {
+				  stream.eatWhile(/\w/);
+				  if (arrayContains(stream.current(), keywords)) {
+					return "style1";
+				  }
+				  stream.next();
+				}
+			  };
+			});
+			var editor = CodeMirror.fromTextArea(document.getElementById("cm"), {
+        		mode: 'python',
+        		lineNumbers: true,
+        		indentUnit: 4,
+        		tabMode: "shift",
+        		matchBrackets: true
+      });
+			function arrayContains(needle, arrhaystack) {
+			  var lower = needle.toLowerCase();
+			  return (arrhaystack.indexOf(lower) > -1);
+			}
+
+			//own functions
+			function SendCode() {
+				alert(editor.getValue())
+				var ws = new WebSocket("ws://localhost:9001/echo");
+				ws.onopen = function() {
+
+              	// Web Socket is connected, send data using send()
+              	ws.send(editor.getValue());
+              	alert("Message is sent...");
+           };;
+			}
+
+      </script>
+   </body>
+</html>
