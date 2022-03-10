@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="PYTHON_MODULE" version="4">
   <component name="NewModuleRootManager">
+<<<<<<< HEAD
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/venv" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.8" jdkType="Python SDK" />
+=======
+<<<<<<< HEAD
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/venv" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+=======
+    <content url="file://$MODULE_DIR$" />
+    <orderEntry type="jdk" jdkName="Python 3.6 (steam-jack)" jdkType="Python SDK" />
+>>>>>>> cec6cb90320397e41b3836aa9d760f0be3f81eac
+>>>>>>> d2f237d55b5342aa68ac6133447133b5459ca8b9
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
