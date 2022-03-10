@@ -1,0 +1,257 @@
+<html>
+<head>
+  <title>Using CodeMirror mode</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="text/javascript" src="https://codemirror.net/lib/codemirror.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://codemirror.net/lib/codemirror.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <style id="compiled-css" type="text/css">
+
+body {
+  font-family: Arial, sans-serif;
+  background: url(http://www.shukatsu-note.com/wp-content/uploads/2014/12/computer-564136_1280.jpg) no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+
+
+.box {
+  width: 40%;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.2);
+  padding: 35px;
+  border: 0px solid #fff;
+  background-clip: padding-box;
+  text-align: left;
+}
+
+
+.button {
+  font-size: 1em;
+  padding: 10px;
+  color: #fff;
+  border: 2px solid #06D85F;
+  border-radius:6px;
+  text-decoration: none;
+  transition: all 0.3s ease-out;
+  background-color:#5cc0df;
+  border-color:#46b8da
+}
+.button:hover {
+  border: 2px solid #06D85F;
+  color: #fff;
+  background: #54D298;
+  text-decoration: none;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: #06D85F;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+
+@media screen and (max-width: 700px){
+  .box{
+    width: 70%;
+  }
+  .popup{
+    width: 70%;
+  }
+}
+
+.banner {
+  width: 100%;
+  margin: 0 0;
+  background: rgba(155,155,155,0.4);
+  padding: 5px;
+  border: 0px solid #fff;
+  background-clip: padding-box;
+  text-align: left;
+}
+
+.ip_edit {
+  font-size: 1em;
+  padding: 10px;
+  color: #fff;
+  background:rgba(155,155,155,0.4);
+  border: 2px solid #5cc0df;
+  border-radius:6px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.textarea {
+  resize: none;
+  margin: 0 0;
+  color: #fff;
+  background: rgba(0,0,0,0.6);
+  padding: 5px;
+  border: 0px solid #fff;
+  background-clip: padding-box;
+  text-align: left;
+  width: 100%;
+  height: 300px;
+}
+
+.text_noedit {
+  font-size: 1em;
+  color: #fff;
+  
+}
+
+.btn.btn-info.btn-lg {
+  margin-left:300px;
+  font-size: 1em;
+  padding: 10px;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+.btn.btn-info.btn-lg:hover {
+  border: 1px solid #06D85F;
+  color: #fff;
+  background: #54D298;
+  text-decoration: none;
+}
+
+.textarea-console {
+  resize: none;
+  margin: 0 0;
+  color: #fff;
+  background: rgba(0,0,0,0.6);
+  padding: 5px;
+  border: 0px solid #fff;
+  background-clip: padding-box;
+  text-align: left;
+  width: 100%;
+  height: 150px;
+}
+
+.codemirror { height: 300px; overflow: auto; border: 1px solid silver; background: rgba(0,0,0,0.6);color:white}
+.CodeMirror-lines {padding: 0px 0; /* Vertical padding around content */}
+.codemirror-matching-bracket { background: red; }
+.codemirror-nonmatching-bracket { background: green; }
+
+</style>
+
+   </head>
+   <body>
+   	<div class="box">
+	  <!-- Top banner -->
+	  <div class="banner">
+		<a class="button" style="text-decoration : none" href="javascript:getInputValue()">Verbinden</a>
+		<input class="ip_edit" type="text" id="ip" name="ip address" placeholder="192.168.0.10">
+		<!--<a class="button-right" href="#popup1">Run</a> -->
+		<a href="javascript:sendCode_dummy()" class="btn btn-info btn-lg">
+		   <span class="glyphicon glyphicon-play-circle"></span> Run
+		</a>
+	  </div>
+	  <!-- Code section -->
+		  <textarea class="textarea" id="cm" name="cm">print("Hello World!")</textarea>
+	  <!-- console banner -->
+	  <div class="banner">
+	  <b class="text_noedit">Console</b>
+	  </div>
+		  <textarea readonly class="textarea-console" id="console" name="console">Hello world!</textarea>
+	</div> 
+    
+ <script type="text/javascript">
+			var keywords = ["timer", "counter", "version"];
+			CodeMirror.defineMode("python", function() {
+			  return {
+				token: function(stream, state) {
+				  stream.eatWhile(/\w/);
+				  if (arrayContains(stream.current(), keywords)) {
+					return "style1";
+				  }
+				  stream.next();
+				}
+			  };
+			});
+			var editor = CodeMirror.fromTextArea(document.getElementById("cm"), {
+        		mode: 'python',
+        		lineNumbers: true,
+        		indentUnit: 4,
+        		tabMode: "shift",
+        		matchBrackets: true
+      });
+			function arrayContains(needle, arrhaystack) {
+			  var lower = needle.toLowerCase();
+			  return (arrhaystack.indexOf(lower) > -1);
+			}
+			//dummy functions
+			function getInputValue(){
+			  // Selecting the input element and get its value 
+			  var inputVal = document.getElementById("ip").value;
+
+			  // Displaying the value
+			  alert(inputVal);
+			}
+
+			function sendCode_dummy(){
+			  // Selecting the input element and get its value 
+			  var inputVal = document.getElementById("cm").value;
+			  var inputVal = editor.getValue()
+
+			  // Displaying the value
+			  alert(inputVal);
+			}
+			//own functions
+			function SendCode() {
+				alert(editor.getValue())
+				var ws = new WebSocket("ws://localhost:9001/echo");
+				ws.onopen = function() {
+
+              	// Web Socket is connected, send data using send()
+              	ws.send(editor.getValue());
+              	alert("Message is sent...");
+           };;
+			}
+
+      </script>
+   </body>
+</html>
